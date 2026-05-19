@@ -2,6 +2,12 @@
 
 an anti-feed morning alarm ritual. v1: audio-first. v2: video.
 
+## live demo
+
+**[web-ten-sand-37.vercel.app](https://web-ten-sand-37.vercel.app)** — hear the morning test ritual, try the engine with your own inputs, see the architecture, listen to all 5 voice archetypes.
+
+the demo runs the same engine the ios app will. `pipeline/` is the python source of truth; [`web/lib/engine-bridge.ts`](web/lib/engine-bridge.ts) is a 1:1 typescript port for the vercel serverless functions.
+
 ## the wedge
 
 generic motivation videos are everywhere. the problem is that the infinite feed wins at the exact moment your willpower is lowest. you wake up, your thumb finds tiktok, the first hour is gone.

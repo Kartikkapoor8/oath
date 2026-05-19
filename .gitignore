@@ -26,6 +26,9 @@ env/
 !experiments/02-voice-synthesis/samples/*.mp3
 !experiments/03-end-to-end-runs/sample_run.mp3
 
+# allow the vercel demo's pre-staged audio (staged demo + 5 voice preset samples)
+!web/public/*.mp3
+
 # ide / os
 .idea/
 .vscode/
