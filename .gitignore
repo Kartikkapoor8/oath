@@ -1,0 +1,42 @@
+# python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+.python-version
+
+# environment
+.env
+.env.local
+.env.*.local
+.envrc
+
+# audio (kept out unless explicitly added)
+*.mp3
+*.wav
+*.m4a
+*.aac
+*.ogg
+*.flac
+
+# ide / os
+.idea/
+.vscode/
+.cursor/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# build / dist
+dist/
+build/
+*.egg
+
+# logs / scratch
+*.log
+scratch/
+tmp/
