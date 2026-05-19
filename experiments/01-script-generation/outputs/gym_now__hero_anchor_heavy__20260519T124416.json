@@ -1,0 +1,24 @@
+{
+  "script": "Up.\nShorts on.\nWater bottle in hand.\n\nDavid Goggins ran his first hundred-mile race on two stress-fractured feet, blisters split open, kidney failing, stopping every mile to drain fluid from his legs with a needle.\nHe had trained zero miles for that distance.\nHe finished in under nineteen hours.\nHe did not do it because the morning felt right.\nHe did it because he showed up at 4am when the gym parking lot was empty and the bar was cold and no one was watching.\n\nYou said it last night:\n\"Do the morning lift before opening any work doc.\"\n\nNo one is coming. It's on you.\n\nShorts are on.\nDoor is open.\nWalk to the gym.",
+  "estimated_duration_seconds": 48,
+  "word_count": 119,
+  "mode": "gym_now",
+  "variant": "hero_anchor_heavy",
+  "model_used": "claude-sonnet-4-6",
+  "system_prompt_hash": "f3becc600fac",
+  "violations": [],
+  "attempts": [
+    {
+      "attempt": 1,
+      "raw_response": "{\n  \"script\": \"Up.\\nShorts on.\\nWater bottle in hand.\\n\\nDavid Goggins ran his first hundred-mile race on two stress-fractured feet, blisters split open, kidney failing, stopping every mile to drain fluid from his legs with a needle.\\nHe had trained zero miles for that distance.\\nHe finished in under nineteen hours.\\nHe did not do it because the morning felt right.\\nHe did it because he showed up at 4am when the gym parking lot was empty and the bar was cold and no one was watching.\\n\\nYou said it last night:\\n\\\"Do the morning lift before opening any work doc.\\\"\\n\\nNo one is coming. It's on you.\\n\\nShorts are on.\\nDoor is open.\\nWalk to the gym.\",\n  \"estimated_duration_seconds\": 60,\n  \"word_count\": 131\n}",
+      "user_prompt_used": "Generate the OATH ritual script using:\n\nmode: gym_now\nvariant: hero_anchor_heavy\nuser's intent (the hardest task they swore last night they'd tackle this morning): \"do the morning lift before opening any work doc\"\nuser's first action (what they'll do in the first 5 minutes): \"put shorts on and walk to the gym\"\nuser's hero (reference by concrete habit, never by invented quote): David Goggins\nuser's grounding phrase (use verbatim, do not paraphrase): \"no one is coming, it's on you\"\n\nTarget read duration: 60 seconds (~150 words at 150 wpm).\n\nOutput as JSON:\n{\n  \"script\": \"the spoken text, with line breaks for natural pauses\",\n  \"estimated_duration_seconds\": <integer>,\n  \"word_count\": <integer>\n}\n\nOutput the JSON only. No preamble. No explanation. No markdown fence."
+    }
+  ],
+  "inputs": {
+    "intent": "do the morning lift before opening any work doc",
+    "first_action": "put shorts on and walk to the gym",
+    "hero": "David Goggins",
+    "grounding_phrase": "no one is coming, it's on you",
+    "target_duration_seconds": 60
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "script": "It is early.\nThe room is dark.\n\nYou swore last night you would ship the OATH v1 spec to GitHub and send Oliver the link before noon.\nThat is the commitment. It is still true.\n\nKobe Bryant was in the gym at 4am.\nNot occasionally \u2014 every morning, before the building filled, before the cameras arrived, before anyone was watching.\nThousands of repetitions in an empty room.\nBy the time his opponents woke up, he had already done the work that made the outcome inevitable.\n\nTrust the work.\n\nOpen the spec doc.\nWrite the wedge section.\nFive minutes. That is all you are doing right now.\nNot noon. Not GitHub. Not Oliver.\nThe wedge section.\n\nSixty minutes. Phone face down.\n\nBegin.",
+  "estimated_duration_seconds": 48,
+  "word_count": 120,
+  "mode": "hardest_work",
+  "variant": "hero_anchor_heavy",
+  "model_used": "claude-sonnet-4-6",
+  "system_prompt_hash": "27d7d9dc632e",
+  "violations": [],
+  "attempts": [
+    {
+      "attempt": 1,
+      "raw_response": "{\n  \"script\": \"It is early.\\nThe room is dark.\\n\\nYou swore last night you would ship the OATH v1 spec to GitHub and send Oliver the link before noon.\\nThat is the commitment. It is still true.\\n\\nKobe Bryant was in the gym at 4am.\\nNot occasionally \u2014 every morning, before the building filled, before the cameras arrived, before anyone was watching.\\nThousands of repetitions in an empty room.\\nBy the time his opponents woke up, he had already done the work that made the outcome inevitable.\\n\\nTrust the work.\\n\\nOpen the spec doc.\\nWrite the wedge section.\\nFive minutes. That is all you are doing right now.\\nNot noon. Not GitHub. Not Oliver.\\nThe wedge section.\\n\\nSixty minutes. Phone face down.\\n\\nBegin.\",\n  \"estimated_duration_seconds\": 60,\n  \"word_count\": 139\n}",
+      "user_prompt_used": "Generate the OATH ritual script using:\n\nmode: hardest_work\nvariant: hero_anchor_heavy\nuser's intent (the hardest task they swore last night they'd tackle this morning): \"ship the OATH v1 spec to github and send Oliver the link before noon\"\nuser's first action (what they'll do in the first 5 minutes): \"open the spec doc and write the wedge section\"\nuser's hero (reference by concrete habit, never by invented quote): Kobe Bryant\nuser's grounding phrase (use verbatim, do not paraphrase): \"trust the work\"\n\nTarget read duration: 60 seconds (~150 words at 150 wpm).\n\nOutput as JSON:\n{\n  \"script\": \"the spoken text, with line breaks for natural pauses\",\n  \"estimated_duration_seconds\": <integer>,\n  \"word_count\": <integer>\n}\n\nOutput the JSON only. No preamble. No explanation. No markdown fence."
+    }
+  ],
+  "inputs": {
+    "intent": "ship the OATH v1 spec to github and send Oliver the link before noon",
+    "first_action": "open the spec doc and write the wedge section",
+    "hero": "Kobe Bryant",
+    "grounding_phrase": "trust the work",
+    "target_duration_seconds": 60
+  }
+}

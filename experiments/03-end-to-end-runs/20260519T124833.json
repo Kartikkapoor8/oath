@@ -1,0 +1,40 @@
+{
+  "timestamp": "20260519T124833",
+  "inputs": {
+    "mode": "hardest_work",
+    "intent": "ship the OATH v1 spec to github",
+    "first_action": "open the spec doc and write the wedge section",
+    "hero": "Kobe Bryant",
+    "phrase": "trust the work",
+    "variant": "default",
+    "voice": "the_closer",
+    "output": "./test_run.mp3",
+    "target_duration": 60
+  },
+  "script_result": {
+    "script": "It is early.\nYou are in bed.\nThat is the only fact that matters right now.\n\nLast night, you said you would ship the OATH v1 spec to GitHub this morning.\nNot someday. This morning.\n\nKobe was in the gym at 4am.\nEmpty building. No cameras. No crowd.\nThree hours of shooting before his teammates arrived.\nNot because someone watched.\nBecause the work was the point.\n\nTrust the work.\n\nOpen the spec doc.\nWrite the wedge section.\nThat is your only job for the next five minutes.\nNot the whole spec. Not GitHub. The wedge section.\n\nSixty minutes. Phone face down.\n\nThe spec does not ship from bed.\n\nSit up.",
+    "estimated_duration_seconds": 44,
+    "word_count": 110,
+    "mode": "hardest_work",
+    "variant": "default",
+    "model_used": "claude-sonnet-4-6",
+    "system_prompt_hash": "a3645f30fc4a",
+    "violations": [],
+    "inputs": {
+      "intent": "ship the OATH v1 spec to github",
+      "first_action": "open the spec doc and write the wedge section",
+      "hero": "Kobe Bryant",
+      "grounding_phrase": "trust the work",
+      "target_duration_seconds": 60
+    }
+  },
+  "audio_result": {
+    "output_path": "test_run.mp3",
+    "voice_preset": "the_closer",
+    "voice_id": "pNInz6obpgDQGcFmaJgB",
+    "voice_label": "Adam",
+    "model_id": "eleven_flash_v2_5",
+    "audio_bytes": 753624,
+    "estimated_duration_seconds": 46.0
+  }
+}

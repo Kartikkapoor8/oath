@@ -1,0 +1,24 @@
+{
+  "script": "Up.\nShorts on.\nWater.\n\nNo one is coming, it's on you.\n\nDavid Goggins ran 100 miles on two broken feet.\nNot for a crowd.\nNot for applause.\nFor the standard he set at 4am when no one was watching.\n\nNo one is coming, it's on you.\n\nYou said it last night.\nYou meant it.\nThe morning lift \u2014 before a single work doc opens.\nThat was the oath.\n\nNot a goal.\nNot a hope.\nAn oath.\n\nShorts.\nOn.\nNow.\n\nThe gym is a walk away.\nThat walk starts at this door.\nNot in ten minutes.\nThis door.\n\nNo one is coming, it's on you.\n\nPut your feet on the floor.\nStand up.\nWalk.",
+  "estimated_duration_seconds": 46,
+  "word_count": 115,
+  "mode": "gym_now",
+  "variant": "grounding_heavy",
+  "model_used": "claude-sonnet-4-6",
+  "system_prompt_hash": "3acfcab72929",
+  "violations": [],
+  "attempts": [
+    {
+      "attempt": 1,
+      "raw_response": "{\n  \"script\": \"Up.\\nShorts on.\\nWater.\\n\\nNo one is coming, it's on you.\\n\\nDavid Goggins ran 100 miles on two broken feet.\\nNot for a crowd.\\nNot for applause.\\nFor the standard he set at 4am when no one was watching.\\n\\nNo one is coming, it's on you.\\n\\nYou said it last night.\\nYou meant it.\\nThe morning lift \u2014 before a single work doc opens.\\nThat was the oath.\\n\\nNot a goal.\\nNot a hope.\\nAn oath.\\n\\nShorts.\\nOn.\\nNow.\\n\\nThe gym is a walk away.\\nThat walk starts at this door.\\nNot in ten minutes.\\nThis door.\\n\\nNo one is coming, it's on you.\\n\\nPut your feet on the floor.\\nStand up.\\nWalk.\",\n  \"estimated_duration_seconds\": 60,\n  \"word_count\": 112\n}",
+      "user_prompt_used": "Generate the OATH ritual script using:\n\nmode: gym_now\nvariant: grounding_heavy\nuser's intent (the hardest task they swore last night they'd tackle this morning): \"do the morning lift before opening any work doc\"\nuser's first action (what they'll do in the first 5 minutes): \"put shorts on and walk to the gym\"\nuser's hero (reference by concrete habit, never by invented quote): David Goggins\nuser's grounding phrase (use verbatim, do not paraphrase): \"no one is coming, it's on you\"\n\nTarget read duration: 60 seconds (~150 words at 150 wpm).\n\nOutput as JSON:\n{\n  \"script\": \"the spoken text, with line breaks for natural pauses\",\n  \"estimated_duration_seconds\": <integer>,\n  \"word_count\": <integer>\n}\n\nOutput the JSON only. No preamble. No explanation. No markdown fence."
+    }
+  ],
+  "inputs": {
+    "intent": "do the morning lift before opening any work doc",
+    "first_action": "put shorts on and walk to the gym",
+    "hero": "David Goggins",
+    "grounding_phrase": "no one is coming, it's on you",
+    "target_duration_seconds": 60
+  }
+}

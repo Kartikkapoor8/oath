@@ -1,0 +1,29 @@
+{
+  "script": "the work is the way\n\n\nthe work is the way\n\n\nEvery morning in Rome, before the city woke, Marcus Aurelius sat at a small writing table and opened his journal. Not to read. To write. He did this for years \u2014 the same table, the same hour, the same hand moving across the page. No one was watching. No one was meant to. He was not building a legacy. He was doing the next thing that was his to do.\n\n\nthe work is the way\n\n\nThis morning, your thing is this:\n\nfinish the OATH spec without doomscrolling first\n\n\nOpen the laptop.\n\nClose every other tab.\n\nOne document. One hour. Nothing before it.\n\n\nthe work is the way\n\n\nBegin.",
+  "estimated_duration_seconds": 47,
+  "word_count": 117,
+  "mode": "grounding_phrases",
+  "variant": "hero_anchor_heavy",
+  "model_used": "claude-sonnet-4-6",
+  "system_prompt_hash": "c439adfc349a",
+  "violations": [],
+  "attempts": [
+    {
+      "attempt": 1,
+      "raw_response": "{\n  \"script\": \"the work is the way\\n\\n\\nthe work is the way\\n\\n\\nEvery morning before Rome woke, Marcus Aurelius sat alone in the dark \u2014 not in a throne room, not at a banquet. At a writing desk. Candle lit. He wrote to no one. He wrote to himself. Obligations he owed himself. Pages of them. Before the court. Before the petitions. Before any of it.\\n\\n\\nthe work is the way\\n\\n\\nFinish the OATH spec without doomscrolling first.\\n\\nOpen the laptop.\\n\\nClose every other tab.\\n\\n\\nthe work is the way\\n\\n\\nBegin.\",\n  \"estimated_duration_seconds\": 60,\n  \"word_count\": 97\n}",
+      "user_prompt_used": "Generate the OATH ritual script using:\n\nmode: grounding_phrases\nvariant: hero_anchor_heavy\nuser's intent (the hardest task they swore last night they'd tackle this morning): \"finish the OATH spec without doomscrolling first\"\nuser's first action (what they'll do in the first 5 minutes): \"open the laptop and close every other tab\"\nuser's hero (reference by concrete habit, never by invented quote): Marcus Aurelius\nuser's grounding phrase (use verbatim, do not paraphrase): \"the work is the way\"\n\nTarget read duration: 60 seconds (~150 words at 150 wpm).\n\nOutput as JSON:\n{\n  \"script\": \"the spoken text, with line breaks for natural pauses\",\n  \"estimated_duration_seconds\": <integer>,\n  \"word_count\": <integer>\n}\n\nOutput the JSON only. No preamble. No explanation. No markdown fence."
+    },
+    {
+      "attempt": 2,
+      "raw_response": "{\n  \"script\": \"the work is the way\\n\\n\\nthe work is the way\\n\\n\\nEvery morning in Rome, before the city woke, Marcus Aurelius sat at a small writing table and opened his journal. Not to read. To write. He did this for years \u2014 the same table, the same hour, the same hand moving across the page. No one was watching. No one was meant to. He was not building a legacy. He was doing the next thing that was his to do.\\n\\n\\nthe work is the way\\n\\n\\nThis morning, your thing is this:\\n\\nfinish the OATH spec without doomscrolling first\\n\\n\\nOpen the laptop.\\n\\nClose every other tab.\\n\\nOne document. One hour. Nothing before it.\\n\\n\\nthe work is the way\\n\\n\\nBegin.\",\n  \"estimated_duration_seconds\": 62,\n  \"word_count\": 138\n}",
+      "user_prompt_used": "Generate the OATH ritual script using:\n\nmode: grounding_phrases\nvariant: hero_anchor_heavy\nuser's intent (the hardest task they swore last night they'd tackle this morning): \"finish the OATH spec without doomscrolling first\"\nuser's first action (what they'll do in the first 5 minutes): \"open the laptop and close every other tab\"\nuser's hero (reference by concrete habit, never by invented quote): Marcus Aurelius\nuser's grounding phrase (use verbatim, do not paraphrase): \"the work is the way\"\n\nTarget read duration: 60 seconds (~150 words at 150 wpm).\n\nOutput as JSON:\n{\n  \"script\": \"the spoken text, with line breaks for natural pauses\",\n  \"estimated_duration_seconds\": <integer>,\n  \"word_count\": <integer>\n}\n\nOutput the JSON only. No preamble. No explanation. No markdown fence.\n\nPREVIOUS ATTEMPT FAILED: Word count was 88, must be 100-220 (target ~150). Try again. Same structure, same inputs, fix only the issues above."
+    }
+  ],
+  "inputs": {
+    "intent": "finish the OATH spec without doomscrolling first",
+    "first_action": "open the laptop and close every other tab",
+    "hero": "Marcus Aurelius",
+    "grounding_phrase": "the work is the way",
+    "target_duration_seconds": 60
+  }
+}

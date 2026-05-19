@@ -22,6 +22,10 @@ env/
 *.ogg
 *.flac
 
+# allow committed audio samples for the morning test and end-to-end demo
+!experiments/02-voice-synthesis/samples/*.mp3
+!experiments/03-end-to-end-runs/sample_run.mp3
+
 # ide / os
 .idea/
 .vscode/

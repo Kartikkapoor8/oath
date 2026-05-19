@@ -1,0 +1,141 @@
+{
+  "timestamp": "20260519T124416",
+  "model": "claude-sonnet-4-6",
+  "results": [
+    {
+      "mode": "hardest_work",
+      "variant": "default",
+      "status": "OK",
+      "word_count": 126,
+      "estimated_duration_seconds": 50,
+      "violations": [],
+      "txt_path": "experiments/01-script-generation/outputs/hardest_work__default.txt"
+    },
+    {
+      "mode": "hardest_work",
+      "variant": "more_clipped",
+      "status": "OK",
+      "word_count": 121,
+      "estimated_duration_seconds": 48,
+      "violations": [],
+      "txt_path": "experiments/01-script-generation/outputs/hardest_work__more_clipped.txt"
+    },
+    {
+      "mode": "hardest_work",
+      "variant": "more_narrative",
+      "status": "OK",
+      "word_count": 121,
+      "estimated_duration_seconds": 48,
+      "violations": [],
+      "txt_path": "experiments/01-script-generation/outputs/hardest_work__more_narrative.txt"
+    },
+    {
+      "mode": "hardest_work",
+      "variant": "hero_anchor_heavy",
+      "status": "OK",
+      "word_count": 120,
+      "estimated_duration_seconds": 48,
+      "violations": [],
+      "txt_path": "experiments/01-script-generation/outputs/hardest_work__hero_anchor_heavy.txt"
+    },
+    {
+      "mode": "hardest_work",
+      "variant": "grounding_heavy",
+      "status": "OK",
+      "word_count": 133,
+      "estimated_duration_seconds": 53,
+      "violations": [],
+      "txt_path": "experiments/01-script-generation/outputs/hardest_work__grounding_heavy.txt"
+    },
+    {
+      "mode": "gym_now",
+      "variant": "default",
+      "status": "OK",
+      "word_count": 137,
+      "estimated_duration_seconds": 55,
+      "violations": [],
+      "txt_path": "experiments/01-script-generation/outputs/gym_now__default.txt"
+    },
+    {
+      "mode": "gym_now",
+      "variant": "more_clipped",
+      "status": "OK",
+      "word_count": 124,
+      "estimated_duration_seconds": 50,
+      "violations": [],
+      "txt_path": "experiments/01-script-generation/outputs/gym_now__more_clipped.txt"
+    },
+    {
+      "mode": "gym_now",
+      "variant": "more_narrative",
+      "status": "OK",
+      "word_count": 128,
+      "estimated_duration_seconds": 51,
+      "violations": [],
+      "txt_path": "experiments/01-script-generation/outputs/gym_now__more_narrative.txt"
+    },
+    {
+      "mode": "gym_now",
+      "variant": "hero_anchor_heavy",
+      "status": "OK",
+      "word_count": 119,
+      "estimated_duration_seconds": 48,
+      "violations": [],
+      "txt_path": "experiments/01-script-generation/outputs/gym_now__hero_anchor_heavy.txt"
+    },
+    {
+      "mode": "gym_now",
+      "variant": "grounding_heavy",
+      "status": "OK",
+      "word_count": 115,
+      "estimated_duration_seconds": 46,
+      "violations": [],
+      "txt_path": "experiments/01-script-generation/outputs/gym_now__grounding_heavy.txt"
+    },
+    {
+      "mode": "grounding_phrases",
+      "variant": "default",
+      "status": "OK",
+      "word_count": 113,
+      "estimated_duration_seconds": 45,
+      "violations": [],
+      "txt_path": "experiments/01-script-generation/outputs/grounding_phrases__default.txt"
+    },
+    {
+      "mode": "grounding_phrases",
+      "variant": "more_clipped",
+      "status": "WARN",
+      "word_count": 88,
+      "estimated_duration_seconds": 35,
+      "violations": [],
+      "txt_path": "experiments/01-script-generation/outputs/grounding_phrases__more_clipped.txt"
+    },
+    {
+      "mode": "grounding_phrases",
+      "variant": "more_narrative",
+      "status": "WARN",
+      "word_count": 99,
+      "estimated_duration_seconds": 40,
+      "violations": [],
+      "txt_path": "experiments/01-script-generation/outputs/grounding_phrases__more_narrative.txt"
+    },
+    {
+      "mode": "grounding_phrases",
+      "variant": "hero_anchor_heavy",
+      "status": "OK",
+      "word_count": 117,
+      "estimated_duration_seconds": 47,
+      "violations": [],
+      "txt_path": "experiments/01-script-generation/outputs/grounding_phrases__hero_anchor_heavy.txt"
+    },
+    {
+      "mode": "grounding_phrases",
+      "variant": "grounding_heavy",
+      "status": "OK",
+      "word_count": 112,
+      "estimated_duration_seconds": 45,
+      "violations": [],
+      "txt_path": "experiments/01-script-generation/outputs/grounding_phrases__grounding_heavy.txt"
+    }
+  ]
+}

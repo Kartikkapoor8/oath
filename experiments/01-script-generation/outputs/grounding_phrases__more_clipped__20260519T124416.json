@@ -1,0 +1,29 @@
+{
+  "script": "The work is the way.\n\n\nThe work is the way.\n\n\nEvery morning in Rome, before the palace stirred, Marcus Aurelius wrote four hundred words by lamplight. Not to publish. Not to perform. To hold the line against his own drift.\n\n\nThe work is the way.\n\n\nThis morning: finish the OATH spec without doomscrolling first.\n\n\nOpen the laptop.\n\nClose every other tab.\n\nOne document. One task. Nothing else open.\n\n\nThe feed is still there at noon. The spec is due now.\n\n\nThe work is the way.\n\n\nOpen the laptop.",
+  "estimated_duration_seconds": 35,
+  "word_count": 88,
+  "mode": "grounding_phrases",
+  "variant": "more_clipped",
+  "model_used": "claude-sonnet-4-6",
+  "system_prompt_hash": "8dd0db1434e1",
+  "violations": [],
+  "attempts": [
+    {
+      "attempt": 1,
+      "raw_response": "{\n  \"script\": \"the work is the way.\\n\\n\\nthe work is the way.\\n\\n\\nEvery morning before dawn, Marcus Aurelius wrote. Not to publish. Not to perform. To hold the line.\\n\\n\\nthe work is the way.\\n\\n\\nFinish the OATH spec without doomscrolling first.\\n\\n\\nThat is what you swore.\\n\\nThat is what this morning is for.\\n\\n\\nthe work is the way.\\n\\n\\nOpen the laptop.\\n\\nClose every other tab.\\n\\nNothing else exists yet.\\n\\n\\nthe work is the way.\\n\\n\\nGo.\",\n  \"estimated_duration_seconds\": 60,\n  \"word_count\": 84\n}",
+      "user_prompt_used": "Generate the OATH ritual script using:\n\nmode: grounding_phrases\nvariant: more_clipped\nuser's intent (the hardest task they swore last night they'd tackle this morning): \"finish the OATH spec without doomscrolling first\"\nuser's first action (what they'll do in the first 5 minutes): \"open the laptop and close every other tab\"\nuser's hero (reference by concrete habit, never by invented quote): Marcus Aurelius\nuser's grounding phrase (use verbatim, do not paraphrase): \"the work is the way\"\n\nTarget read duration: 60 seconds (~150 words at 150 wpm).\n\nOutput as JSON:\n{\n  \"script\": \"the spoken text, with line breaks for natural pauses\",\n  \"estimated_duration_seconds\": <integer>,\n  \"word_count\": <integer>\n}\n\nOutput the JSON only. No preamble. No explanation. No markdown fence."
+    },
+    {
+      "attempt": 2,
+      "raw_response": "{\n  \"script\": \"The work is the way.\\n\\n\\nThe work is the way.\\n\\n\\nEvery morning in Rome, before the palace stirred, Marcus Aurelius wrote four hundred words by lamplight. Not to publish. Not to perform. To hold the line against his own drift.\\n\\n\\nThe work is the way.\\n\\n\\nThis morning: finish the OATH spec without doomscrolling first.\\n\\n\\nOpen the laptop.\\n\\nClose every other tab.\\n\\nOne document. One task. Nothing else open.\\n\\n\\nThe feed is still there at noon. The spec is due now.\\n\\n\\nThe work is the way.\\n\\n\\nOpen the laptop.\",\n  \"estimated_duration_seconds\": 60,\n  \"word_count\": 103\n}",
+      "user_prompt_used": "Generate the OATH ritual script using:\n\nmode: grounding_phrases\nvariant: more_clipped\nuser's intent (the hardest task they swore last night they'd tackle this morning): \"finish the OATH spec without doomscrolling first\"\nuser's first action (what they'll do in the first 5 minutes): \"open the laptop and close every other tab\"\nuser's hero (reference by concrete habit, never by invented quote): Marcus Aurelius\nuser's grounding phrase (use verbatim, do not paraphrase): \"the work is the way\"\n\nTarget read duration: 60 seconds (~150 words at 150 wpm).\n\nOutput as JSON:\n{\n  \"script\": \"the spoken text, with line breaks for natural pauses\",\n  \"estimated_duration_seconds\": <integer>,\n  \"word_count\": <integer>\n}\n\nOutput the JSON only. No preamble. No explanation. No markdown fence.\n\nPREVIOUS ATTEMPT FAILED: Word count was 73, must be 100-220 (target ~150). Try again. Same structure, same inputs, fix only the issues above."
+    }
+  ],
+  "inputs": {
+    "intent": "finish the OATH spec without doomscrolling first",
+    "first_action": "open the laptop and close every other tab",
+    "hero": "Marcus Aurelius",
+    "grounding_phrase": "the work is the way",
+    "target_duration_seconds": 60
+  }
+}

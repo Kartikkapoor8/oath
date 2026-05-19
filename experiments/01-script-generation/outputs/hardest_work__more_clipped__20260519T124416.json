@@ -1,0 +1,29 @@
+{
+  "script": "It is early.\n\nYou said you'd ship the OATH v1 spec to GitHub and send Oliver the link before noon.\n\nThat was last night. That was a real commitment.\n\nKobe Bryant was in the gym at four in the morning. No crowd. No camera. Four hundred makes before most people set an alarm. Not because he felt like it. Because he said he would.\n\nYou said the same thing.\n\ntrust the work\n\nOpen the spec doc. Write the wedge section. That is the first five minutes. That is the only thing that exists right now.\n\nForty-five minutes. Phone face down.\n\nOliver gets that link before noon. The spec ships today. Not because conditions are right. Because you committed.\n\nWrite.",
+  "estimated_duration_seconds": 48,
+  "word_count": 121,
+  "mode": "hardest_work",
+  "variant": "more_clipped",
+  "model_used": "claude-sonnet-4-6",
+  "system_prompt_hash": "94c9755efb4e",
+  "violations": [],
+  "attempts": [
+    {
+      "attempt": 1,
+      "raw_response": "{\n  \"script\": \"Alarm's off.\\n\\nYou said: ship the OATH v1 spec to GitHub and send Oliver the link before noon.\\n\\nNot someday. Today. Before noon.\\n\\nKobe was in the gym at 4am. No crowd. No cameras. Just reps. Same work, every morning, before the world woke up.\\n\\nYou do the same.\\n\\nTrust the work.\\n\\nOpen the spec doc. Write the wedge section. That's the first five minutes. Nothing else exists.\\n\\nForty-five minutes. Phone face down.\\n\\nOliver gets that link.\\n\\nWrite.\",\n  \"estimated_duration_seconds\": 58,\n  \"word_count\": 84\n}",
+      "user_prompt_used": "Generate the OATH ritual script using:\n\nmode: hardest_work\nvariant: more_clipped\nuser's intent (the hardest task they swore last night they'd tackle this morning): \"ship the OATH v1 spec to github and send Oliver the link before noon\"\nuser's first action (what they'll do in the first 5 minutes): \"open the spec doc and write the wedge section\"\nuser's hero (reference by concrete habit, never by invented quote): Kobe Bryant\nuser's grounding phrase (use verbatim, do not paraphrase): \"trust the work\"\n\nTarget read duration: 60 seconds (~150 words at 150 wpm).\n\nOutput as JSON:\n{\n  \"script\": \"the spoken text, with line breaks for natural pauses\",\n  \"estimated_duration_seconds\": <integer>,\n  \"word_count\": <integer>\n}\n\nOutput the JSON only. No preamble. No explanation. No markdown fence."
+    },
+    {
+      "attempt": 2,
+      "raw_response": "{\n  \"script\": \"It is early.\\n\\nYou said you'd ship the OATH v1 spec to GitHub and send Oliver the link before noon.\\n\\nThat was last night. That was a real commitment.\\n\\nKobe Bryant was in the gym at four in the morning. No crowd. No camera. Four hundred makes before most people set an alarm. Not because he felt like it. Because he said he would.\\n\\nYou said the same thing.\\n\\ntrust the work\\n\\nOpen the spec doc. Write the wedge section. That is the first five minutes. That is the only thing that exists right now.\\n\\nForty-five minutes. Phone face down.\\n\\nOliver gets that link before noon. The spec ships today. Not because conditions are right. Because you committed.\\n\\nWrite.\",\n  \"estimated_duration_seconds\": 60,\n  \"word_count\": 138\n}",
+      "user_prompt_used": "Generate the OATH ritual script using:\n\nmode: hardest_work\nvariant: more_clipped\nuser's intent (the hardest task they swore last night they'd tackle this morning): \"ship the OATH v1 spec to github and send Oliver the link before noon\"\nuser's first action (what they'll do in the first 5 minutes): \"open the spec doc and write the wedge section\"\nuser's hero (reference by concrete habit, never by invented quote): Kobe Bryant\nuser's grounding phrase (use verbatim, do not paraphrase): \"trust the work\"\n\nTarget read duration: 60 seconds (~150 words at 150 wpm).\n\nOutput as JSON:\n{\n  \"script\": \"the spoken text, with line breaks for natural pauses\",\n  \"estimated_duration_seconds\": <integer>,\n  \"word_count\": <integer>\n}\n\nOutput the JSON only. No preamble. No explanation. No markdown fence.\n\nPREVIOUS ATTEMPT FAILED: Word count was 81, must be 100-220 (target ~150). Try again. Same structure, same inputs, fix only the issues above."
+    }
+  ],
+  "inputs": {
+    "intent": "ship the OATH v1 spec to github and send Oliver the link before noon",
+    "first_action": "open the spec doc and write the wedge section",
+    "hero": "Kobe Bryant",
+    "grounding_phrase": "trust the work",
+    "target_duration_seconds": 60
+  }
+}
