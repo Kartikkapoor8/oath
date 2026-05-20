@@ -4,9 +4,9 @@ an anti-feed morning alarm ritual. v1: audio-first. v2: video.
 
 ## live demo
 
-**[web-ten-sand-37.vercel.app](https://web-ten-sand-37.vercel.app)** — hear the morning test ritual, try the engine with your own inputs, see the architecture, listen to all 5 voice archetypes.
+**[web-ten-sand-37.vercel.app](https://web-ten-sand-37.vercel.app)** — try the v2 engine yourself, watch the 10-stage pipeline run in real-time, hear the morning test ritual, see the rubric scoring, compare v1 vs v2 audio.
 
-the demo runs the same engine the ios app will. `pipeline/` is the python source of truth; [`web/lib/engine-bridge.ts`](web/lib/engine-bridge.ts) is a 1:1 typescript port for the vercel serverless functions.
+the demo runs the same engine the ios app will. `pipeline/v2/` is the python source of truth; [`web/lib/oath-engine/`](web/lib/oath-engine/) is a 1:1 typescript port that powers the vercel serverless `/api/generate` SSE endpoint (streams real-time pipeline trace as each stage completes).
 
 ## the wedge
 

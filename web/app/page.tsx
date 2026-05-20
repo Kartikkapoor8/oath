@@ -1,7 +1,9 @@
 import Hero from '@/components/Hero';
 import StagedDemo from '@/components/StagedDemo';
 import TryYourOwn from '@/components/TryYourOwn';
-import ArchitectureDiagram from '@/components/ArchitectureDiagram';
+import PipelineDiagram from '@/components/PipelineDiagram';
+import RubricVisualization from '@/components/RubricVisualization';
+import ComparisonSection from '@/components/ComparisonSection';
 import VoicePresets from '@/components/VoicePresets';
 import RoadmapSection from '@/components/RoadmapSection';
 import EngineeringProof from '@/components/EngineeringProof';
@@ -13,7 +15,9 @@ export default function Home() {
       <Hero />
       <StagedDemo />
       <TryYourOwn />
-      <ArchitectureDiagram />
+      <PipelineDiagram />
+      <RubricVisualization />
+      <ComparisonSection />
       <VoicePresets />
       <RoadmapSection />
       <EngineeringProof />
