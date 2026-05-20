@@ -1,0 +1,69 @@
+{
+  "__comment": "MIRROR OF: pipeline/v2/rubric.py — keep in sync",
+  "axes": {
+    "specificity": {
+      "weight": 2.0,
+      "description": "does the script reference the user's specific intent verbatim or near-verbatim?",
+      "anchors": {
+        "10": "Quotes the user's intent in the first 15 seconds, references the first_action by the closing",
+        "7": "References the intent paraphrased or partially",
+        "4": "Mentions the general task but doesn't quote the user's specific words",
+        "1": "Generic motivation, could be the same script for any user"
+      }
+    },
+    "command_density": {
+      "weight": 1.5,
+      "description": "how many imperative verbs vs descriptive sentences?",
+      "anchors": {
+        "10": "5+ imperative verbs, each on its own line, no rhetorical questions",
+        "7": "3-4 imperatives, mix of commands and statements",
+        "4": "1-2 imperatives, mostly descriptive",
+        "1": "No commands, all rhetorical or descriptive"
+      }
+    },
+    "structural_arc_completeness": {
+      "weight": 1.5,
+      "description": "does the script hit all 5 beats (groggy reality, quoted intent, concrete hero, grounding phrase, command)?",
+      "anchors": {
+        "10": "All 5 beats present, in order, distinct",
+        "7": "4 of 5 beats present",
+        "4": "3 of 5 beats present or out of order",
+        "1": "Missing 3+ beats or structure entirely"
+      }
+    },
+    "cliche_freedom": {
+      "weight": 1.0,
+      "description": "absence of subtle motivational clichés (beyond the banned list)",
+      "anchors": {
+        "10": "Zero clichés, every line earns its place",
+        "7": "1-2 mild clichés that still feel earned",
+        "4": "Multiple subtle clichés, generic in places",
+        "1": "Motivational poster, full of clichés"
+      }
+    },
+    "hero_anchor_concreteness": {
+      "weight": 1.5,
+      "description": "is the hero referenced with specific habit/time/place, or vague platitude?",
+      "anchors": {
+        "10": "Specific time + place + habit (e.g., '4am at the Lakers facility, before anyone else')",
+        "7": "Specific habit, vague on time or place",
+        "4": "Generic habit ('worked hard')",
+        "1": "No hero reference or invented quote"
+      }
+    },
+    "voice_directness": {
+      "weight": 1.0,
+      "description": "statements and commands vs questions and hedges",
+      "anchors": {
+        "10": "All declaratives and imperatives, zero question marks, zero 'you should' or 'try to'",
+        "7": "Mostly declarative, occasional hedge",
+        "4": "Multiple hedges or questions",
+        "1": "Tentative, full of qualifications"
+      }
+    }
+  },
+  "thresholds": {
+    "minimum_overall_score": 7.0,
+    "minimum_axis_score": 5.0
+  }
+}
