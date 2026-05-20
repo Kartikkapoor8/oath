@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FileCheck2, FlaskConical, Bed, GitBranch, ArrowUpRight } from 'lucide-react';
+import { Layers, Activity, AlarmClock, GitCommit, ArrowUpRight } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 
 const REPO = 'https://github.com/Kartikkapoor8/oath';
@@ -16,30 +16,30 @@ interface Receipt {
 
 const RECEIPTS: Receipt[] = [
   {
-    Icon: FileCheck2,
-    headline: '15 scripts generated',
-    body: 'zero banned-phrase violations across 3 modes × 5 variants. raw outputs + JSON metadata committed to the repo.',
-    link: `${REPO}/tree/main/experiments/01-script-generation/outputs`,
-    linkLabel: 'view outputs',
+    Icon: Layers,
+    headline: '10 pipeline stages',
+    body: 'full v2 source code on github. 11 typescript modules in web/lib/oath-engine/, 19 python files in pipeline/v2/.',
+    link: `${REPO}/tree/main/pipeline/v2`,
+    linkLabel: 'view v2 pipeline source',
   },
   {
-    Icon: FlaskConical,
-    headline: '3 modes × 5 variants',
-    body: 'tested to validate prompt generalization. honest verdict on which variant won per mode, with what worked and what didn\'t.',
-    link: `${REPO}/blob/main/experiments/01-script-generation/verdict.md`,
-    linkLabel: 'view verdict',
+    Icon: Activity,
+    headline: '8 claude calls per generation',
+    body: 'every claude call traced and logged. the experiments/04 run captured all 10 stage outputs as separate json files.',
+    link: `${REPO}/blob/main/experiments/04-multi-pass-refinement/final_run.json`,
+    linkLabel: 'view pipeline_run.json',
   },
   {
-    Icon: Bed,
-    headline: 'morning test on real groggy human',
-    body: 'kartik tested 3 winning rituals on himself at 6am, scored honestly on three axes. n=1 but real. results committed before 7am.',
+    Icon: AlarmClock,
+    headline: 'morning test on a real groggy person',
+    body: 'kartik tested 3 winning rituals on himself at 6am, scored on three axes. n=1 but real. results committed before 7am.',
     link: `${REPO}/blob/main/experiments/03-morning-test/results.md`,
     linkLabel: 'view results',
   },
   {
-    Icon: GitBranch,
+    Icon: GitCommit,
     headline: 'built in 48 hours',
-    body: 'engine + 15 scripts + 3 audio rituals + spec + roadmap + this web demo. full build trail in daily logs.',
+    body: 'engine + v2 pipeline + 15 monday-night scripts + 3 audio rituals + spec + roadmap + this web demo. full trail in daily logs.',
     link: `${REPO}/tree/main/daily`,
     linkLabel: 'view daily logs',
   },
@@ -50,12 +50,13 @@ export default function EngineeringProof() {
     <section id="receipts" className="relative w-full py-24 md:py-32 bg-bg-raised/30">
       <div className="mx-auto w-full max-w-6xl px-6 md:px-12">
         <SectionHeader
-          caption="07 — receipts"
-          headline="what's been built. what's been tested."
+          caption="08 — receipts"
+          headline="every claim has a github link."
           body={
             <>
-              oath isn&apos;t a pitch deck. the engine is on github, the morning test ran on me at 6am with the same
-              ritual you just heard, and the full experiment log is public.
+              oath isn&apos;t a pitch deck. the v2 engine is on github. the morning test ran on me at 6am with the
+              same engine. the full pipeline_run.json from a real generation is public. clone the repo, run the
+              engine yourself with your own inputs.
             </>
           }
         />

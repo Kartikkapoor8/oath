@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Calendar, Activity, UserSearch, BookOpen } from 'lucide-react';
+import { Music, Calendar, Activity, UserSearch, BookOpen } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 
 interface Card {
@@ -15,10 +15,18 @@ interface Card {
 const CARDS: Card[] = [
   {
     badge: 'v1.1',
+    weeks: 'buildable in: 2 weeks',
+    title: 'music bed mixing',
+    body:
+      'pre-licensed instrumental beds mixed under the voice for cinematic ritual feel. library of 10-20 tracks from artlist.io or epidemic sound (~$40-50/year commercial license). selection automatically matched to mode — intense beds for gym_now, calm builds for grounding_phrases, deliberate piano for hardest_work. stage 9 of the pipeline is already wired as a pass-through stub waiting on the bed library.',
+    Icon: Music,
+  },
+  {
+    badge: 'v1.1',
     weeks: 'buildable in: 2-3 weeks',
     title: 'calendar sync',
     body:
-      'oath reads tomorrow\'s calendar and surfaces your hardest meeting or deepest work block as a suggested intent. confirm or override with one tap. the engine generates a ritual specifically tuned to that meeting or task. removes the friction of typing intent at night.',
+      "oath reads tomorrow's calendar and surfaces your hardest meeting or deepest work block as a suggested intent. you confirm or override with one tap. the engine generates a ritual specifically tuned to that meeting or task. removes the friction of typing intent at night.",
     Icon: Calendar,
   },
   {
@@ -26,7 +34,7 @@ const CARDS: Card[] = [
     weeks: 'buildable in: 3-4 weeks',
     title: 'health integration',
     body:
-      'sleep quality data from apple health adjusts the ritual\'s energy level. slept 4 hours? the ritual is gentler, the voice softer. slept 8 hours? full force, no excuses. the ritual matches your physical state, not just your goals.',
+      "sleep quality data from apple health adjusts the ritual's energy level. slept 4 hours? the ritual is gentler, the voice softer. slept 8 hours? full force, no excuses. the ritual matches your physical state, not just your goals.",
     Icon: Activity,
   },
   {
@@ -34,7 +42,7 @@ const CARDS: Card[] = [
     weeks: 'buildable in: 6-8 weeks',
     title: 'passive profile',
     body:
-      'opt-in connection to your public instagram or tiktok. the engine analyzes which creators, athletes, and characters you engage with and surfaces them as suggested heroes. watched 40 hours of suits? harvey specter becomes a suggested hero archetype. zero manual input.',
+      "opt-in connection to your public instagram or tiktok. the engine analyzes which creators, athletes, and characters you engage with and surfaces them as suggested heroes. you've watched 40 hours of suits — harvey specter becomes a suggested hero archetype. zero manual input.",
     Icon: UserSearch,
   },
   {
@@ -42,7 +50,7 @@ const CARDS: Card[] = [
     weeks: 'buildable in: 8-12 weeks',
     title: 'hero corpus',
     body:
-      '50-100 sourced, fact-checked anecdotes from documented hero habits — jordan\'s pre-dawn shootarounds, kobe\'s mamba mentality routines, churchill\'s dictation walks. the engine references verified specifics instead of relying on LLM general knowledge, eliminating hallucination risk.',
+      "50-100 sourced, fact-checked anecdotes from documented hero habits — jordan's pre-dawn shootarounds, kobe's mamba mentality routines, churchill's dictation walks. the engine references verified specifics instead of relying on llm general knowledge, eliminating hallucination risk.",
     Icon: BookOpen,
   },
 ];
@@ -52,13 +60,12 @@ export default function RoadmapSection() {
     <section id="roadmap" className="relative w-full py-24 md:py-32">
       <div className="mx-auto w-full max-w-6xl px-6 md:px-12">
         <SectionHeader
-          caption="06 — roadmap"
+          caption="07 — roadmap"
           headline="what comes after v1 ships."
           body={
             <>
-              v1 ships the audio loop and proves whether the ritual changes behavior. these integrations make oath more
-              personal, more passive, and more defensible. all of them are buildable within weeks of v1 launch —
-              they&apos;re scoped, not vaporware.
+              v1 ships audio. these features layer on after. each card has a realistic timeline based on engineering
+              scope, not vaporware promises.
             </>
           }
         />
@@ -70,7 +77,7 @@ export default function RoadmapSection() {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: i * 0.07 }}
               className="relative rounded-2xl border border-future/30 bg-future-glow p-6 md:p-8 group hover:border-future/60 transition-colors"
             >
               <div className="flex items-start justify-between gap-4">
