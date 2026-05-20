@@ -21,9 +21,17 @@ monday, may 19 2026. spec review with oliver wednesday 3pm.
 - [daily log](daily/)
 - [v1 spec](docs/01-spec.md) — coming tuesday
 - [v2 roadmap](docs/02-v2-roadmap.md) — coming tuesday
-- [engine deep dive](docs/03-engine.md) — coming tuesday
+- [engine deep dive](docs/03-engine.md) — **v2 architecture, 10 stages, full diagram**
 - [experiments](experiments/) — script generation done monday night, morning test running tuesday 6am
-- [pipeline code](pipeline/) — working end-to-end as of monday night
+- [pipeline code](pipeline/) — v1 working end-to-end; [v2 pipeline](pipeline/v2/) ships the multi-pass engine
+
+## the engine
+
+[v2 pipeline architecture](docs/03-engine.md) — 10 stages, 8 claude calls, validated critique-refine-judge cycle. one orchestrator, one CLI, mode-tuned voice settings, prosody markup.
+
+[see it in action](experiments/04-multi-pass-refinement/) — full per-stage trace from one real generation. every claude call's input and output is captured as a separate json file.
+
+[v1 vs v2 comparison](experiments/05-v2-vs-v1-comparison/) — same inputs, two pipelines, audible difference. honest verdict: v2 doesn't beat v1 on a single happy run, but v2 bounds the worst case and gives full traceability.
 
 ## listen
 
@@ -51,3 +59,17 @@ python pipeline/run.py \
 ```
 
 produces a 45-90 second mp3 ritual in under 30 seconds. modes: `hardest_work`, `gym_now`, `grounding_phrases`. variants: `default`, `more_clipped`, `more_narrative`, `hero_anchor_heavy`, `grounding_heavy`. voices: `the_closer`, `the_drill`, `the_stoic`, `the_coach`, `the_friend`. see [`pipeline/run.py --help`](pipeline/run.py) for all flags, and [a sample end-to-end run](experiments/03-end-to-end-runs/sample_run.mp3) for what comes out.
+
+### or try the v2 multi-pass engine
+
+```bash
+python pipeline/v2/run_v2.py \
+    --mode hardest_work \
+    --intent "your hardest task" \
+    --first-action "what you'll do in the first 5 minutes" \
+    --hero "your hero" \
+    --phrase "your grounding phrase" \
+    --output ./ritual_v2.mp3
+```
+
+v2 runs 10 stages: input validation → claude pre-analysis → 3 candidate generations in parallel → 6-axis critique → winner selection → optional refinement → llm-as-judge → prosody markup → mode-tuned synthesis. produces an mp3 in ~25 seconds, writes a full `pipeline_run.json` trace alongside the audio. add `--save-stage-outputs DIR` to dump every claude call's input and output as separate json files.
