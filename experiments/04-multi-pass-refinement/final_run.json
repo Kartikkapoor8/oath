@@ -1,0 +1,212 @@
+{
+  "timestamp": "2026-05-20T00:37:04Z",
+  "inputs": {
+    "mode": "hardest_work",
+    "intent": "ship the OATH v1 spec to github and send Oliver the link before noon",
+    "first_action": "open the spec doc and write the wedge section",
+    "hero": "Kobe Bryant",
+    "phrase": "trust the work",
+    "variant": "default",
+    "voice": "the_closer",
+    "target_duration_seconds": 60
+  },
+  "total_elapsed_seconds": 25.11,
+  "total_claude_calls": 8,
+  "total_elevenlabs_calls": 1,
+  "final_mp3_path": "experiments/04-multi-pass-refinement/final_audio.mp3",
+  "stage_0_validation": {
+    "input": {
+      "mode": "hardest_work",
+      "intent": "ship the OATH v1 spec to github and send Oliver the link before noon",
+      "first_action": "open the spec doc and write the wedge section",
+      "hero": "Kobe Bryant",
+      "phrase": "trust the work",
+      "variant": "default",
+      "voice": "the_closer",
+      "target_duration_seconds": 60
+    },
+    "normalized": {
+      "mode": "hardest_work",
+      "intent": "ship the OATH v1 spec to github and send Oliver the link before noon",
+      "first_action": "open the spec doc and write the wedge section",
+      "hero": "Kobe Bryant",
+      "phrase": "trust the work",
+      "variant": "default",
+      "voice": "the_closer",
+      "target_duration_seconds": 60
+    },
+    "elapsed_seconds": 0.0
+  },
+  "stage_1_analysis": {
+    "plan": {
+      "tone_notes": "This user has a concrete deliverable with a hard deadline and a specific first action \u2014 the tone should be cold, focused precision, not motivational warmth. Think locker room at 4am, not halftime speech.",
+      "hero_anchor_strategy": "Reference Kobe's documented practice of arriving at the Staples Center at 4am to work on specific weaknesses in isolation \u2014 not general greatness, but the deliberate targeting of one thing before the world woke up. This maps directly to the user shipping one specific section of one specific doc before noon, while others haven't started their day.",
+      "grounding_phrase_placement": "After the hero anchor and before the closing command \u2014 it functions as the hinge between what Kobe knew and what the user must now do. The phrase 'trust the work' lands hardest when the motivation has already been established and the only thing left is execution.",
+      "command_structure": "Two-beat imperative with a physical escalation \u2014 'open it. write the wedge.' The period between beats forces a pause that mimics deliberate action, not urgency.",
+      "estimated_complexity": "medium",
+      "raw_response": "```json\n{\n  \"tone_notes\": \"This user has a concrete deliverable with a hard deadline and a specific first action \u2014 the tone should be cold, focused precision, not motivational warmth. Think locker room at 4am, not halftime speech.\",\n  \"hero_anchor_strategy\": \"Reference Kobe's documented practice of arriving at the Staples Center at 4am to work on specific weaknesses in isolation \u2014 not general greatness, but the deliberate targeting of one thing before the world woke up. This maps directly to the user shipping one specific section of one specific doc before noon, while others haven't started their day.\",\n  \"grounding_phrase_placement\": \"After the hero anchor and before the closing command \u2014 it functions as the hinge between what Kobe knew and what the user must now do. The phrase 'trust the work' lands hardest when the motivation has already been established and the only thing left is execution.\",\n  \"command_structure\": \"Two-beat imperative with a physical escalation \u2014 'open it. write the wedge.' The period between beats forces a pause that mimics deliberate action, not urgency.\",\n  \"estimated_complexity\": \"medium\"\n}\n```",
+      "model_used": "claude-sonnet-4-6"
+    },
+    "elapsed_seconds": 8.1
+  },
+  "stage_2_candidates": {
+    "candidates": [
+      {
+        "candidate_id": 1,
+        "script": "It is 5am.\nThe room is dark.\nYou are already behind.\n\nLast night you said you would ship the OATH v1 spec to GitHub\nand send Oliver the link before noon.\nNot a plan.\nA contract.\n\nKobe was at Staples Center at 4am.\nNot for the crowd.\nNot for the highlight.\nTo work one specific weakness into the floor\nbefore anyone else laced up.\nOne thing. Isolated. Repeated.\nDone before the world started its day.\n\nThis is the same thing.\n\nTrust the work.\n\nSixty minutes. Phone face down.\nOpen the spec doc.\nWrite the wedge section.\nOne section becomes the whole.\nThe whole becomes the link.\nThe link goes to Oliver before noon.\n\nNothing else exists until the wedge section is done.\n\nOpen it.",
+        "word_count": 124,
+        "estimated_duration_seconds": 50,
+        "internal_self_check": 9,
+        "temperature": 0.6,
+        "violations": [],
+        "raw_response": "{\n  \"script\": \"It is 5am.\\nThe room is dark.\\nYou are already behind.\\n\\nLast night you said you would ship the OATH v1 spec to GitHub\\nand send Oliver the link before noon.\\nNot a plan.\\nA contract.\\n\\nKobe was at Staples Center at 4am.\\nNot for the crowd.\\nNot for the highlight.\\nTo work one specific weakness into the floor\\nbefore anyone else laced up.\\nOne thing. Isolated. Repeated.\\nDone before the world started its day.\\n\\nThis is the same thing.\\n\\nTrust the work.\\n\\nSixty minutes. Phone face down.\\nOpen the spec doc.\\nWrite the wedge section.\\nOne section becomes the whole.\\nThe whole becomes the link.\\nThe link goes to Oliver before noon.\\n\\nNothing else exists until the wedge section is done.\\n\\nOpen it.\",\n  \"estimated_duration_seconds\": 58,\n  \"internal_self_check\": 9\n}",
+        "model_used": "claude-sonnet-4-6"
+      },
+      {
+        "candidate_id": 2,
+        "script": "It is 5am.\nThe room is dark.\nYou are already behind.\n\nLast night you said you would ship the OATH v1 spec to GitHub\nand send Oliver the link before noon.\nNot a thought. Not an intention.\nA contract.\n\nKobe was at the Staples Center at 4am.\nNot for the game. Not for the cameras.\nFor one weakness.\nOne specific thing, worked on alone, in an empty building,\nbefore the rest of the league had opened their eyes.\nThe work was done before anyone else's day began.\n\nThis is the same building.\nThis is the same hour.\n\nTrust the work.\n\nSixty minutes. Phone face down.\nOpen the spec doc.\nWrite the wedge section.\nOne section becomes the whole.\nThe whole becomes the link.\nThe link lands in Oliver's inbox before noon.\n\nNothing else exists until the wedge section is done.\n\nOpen it.",
+        "word_count": 144,
+        "estimated_duration_seconds": 58,
+        "internal_self_check": 9,
+        "temperature": 0.8,
+        "violations": [],
+        "raw_response": "{\n  \"script\": \"It is 5am.\\nThe room is dark.\\nYou are already behind.\\n\\nLast night you said you would ship the OATH v1 spec to GitHub\\nand send Oliver the link before noon.\\nNot a thought. Not an intention.\\nA contract.\\n\\nKobe was at the Staples Center at 4am.\\nNot for the game. Not for the cameras.\\nFor one weakness.\\nOne specific thing, worked on alone, in an empty building,\\nbefore the rest of the league had opened their eyes.\\nThe work was done before anyone else's day began.\\n\\nThis is the same building.\\nThis is the same hour.\\n\\nTrust the work.\\n\\nSixty minutes. Phone face down.\\nOpen the spec doc.\\nWrite the wedge section.\\nOne section becomes the whole.\\nThe whole becomes the link.\\nThe link lands in Oliver's inbox before noon.\\n\\nNothing else exists until the wedge section is done.\\n\\nOpen it.\",\n  \"estimated_duration_seconds\": 58,\n  \"internal_self_check\": 9\n}",
+        "model_used": "claude-sonnet-4-6"
+      },
+      {
+        "candidate_id": 3,
+        "script": "It is 5am.\nThe room is dark.\nNothing has moved yet.\n\nLast night you said you would ship the OATH v1 spec to GitHub\nand send Oliver the link before noon.\nNot eventually. Before noon.\nThat is not a goal.\nThat is a debt coming due.\n\nKobe targeted his weaknesses in an empty Staples Center at 4am.\nNot the full game. One thing.\nLeft hand. Mid-range. Footwork off the catch.\nOne thing, isolated, destroyed, before anyone else laced up.\nThe rest of the day was built on that hour.\n\nThis is the same hour.\n\nTrust the work.\n\nSixty minutes. Phone face down.\nOpen the spec doc.\nWrite the wedge section.\nOne section becomes the whole.\nThe whole becomes the link.\nThe link lands in Oliver's inbox before noon.\n\nNothing else exists until the wedge section is done.\n\nOpen it.",
+        "word_count": 141,
+        "estimated_duration_seconds": 56,
+        "internal_self_check": 9,
+        "temperature": 1.0,
+        "violations": [],
+        "raw_response": "{\n  \"script\": \"It is 5am.\\nThe room is dark.\\nNothing has moved yet.\\n\\nLast night you said you would ship the OATH v1 spec to GitHub\\nand send Oliver the link before noon.\\nNot eventually. Before noon.\\nThat is not a goal.\\nThat is a debt coming due.\\n\\nKobe targeted his weaknesses in an empty Staples Center at 4am.\\nNot the full game. One thing.\\nLeft hand. Mid-range. Footwork off the catch.\\nOne thing, isolated, destroyed, before anyone else laced up.\\nThe rest of the day was built on that hour.\\n\\nThis is the same hour.\\n\\nTrust the work.\\n\\nSixty minutes. Phone face down.\\nOpen the spec doc.\\nWrite the wedge section.\\nOne section becomes the whole.\\nThe whole becomes the link.\\nThe link lands in Oliver's inbox before noon.\\n\\nNothing else exists until the wedge section is done.\\n\\nOpen it.\",\n  \"estimated_duration_seconds\": 58,\n  \"internal_self_check\": 9\n}",
+        "model_used": "claude-sonnet-4-6"
+      }
+    ],
+    "elapsed_seconds": 5.652,
+    "n": 3,
+    "temperatures": [
+      0.6,
+      0.8,
+      1.0
+    ]
+  },
+  "stage_3_critiques": {
+    "critiques": [
+      {
+        "candidate_id": 1,
+        "scores": {
+          "specificity": 9,
+          "command_density": 8,
+          "structural_arc_completeness": 10,
+          "cliche_freedom": 8,
+          "hero_anchor_concreteness": 8,
+          "voice_directness": 9
+        },
+        "overall_score": 8.71,
+        "weakest_axis": "hero_anchor_concreteness",
+        "critique_notes": "The Kobe reference is strong on time (4am) and place (Staples Center) but the habit description \u2014 'work one specific weakness into the floor' \u2014 is slightly abstract and invented rather than tied to a documented, concrete drill or routine. To hit a 10, it should name a specific, verifiable habit (e.g., 'post footwork drills' or 'mid-range pull-up repetitions from the elbow') so the anchor feels earned rather than atmospheric. The current phrasing gestures at specificity without fully landing it.",
+        "raw_response": "```json\n{\n  \"scores\": {\n    \"specificity\": 9,\n    \"command_density\": 8,\n    \"structural_arc_completeness\": 10,\n    \"cliche_freedom\": 8,\n    \"hero_anchor_concreteness\": 8,\n    \"voice_directness\": 9\n  },\n  \"weakest_axis\": \"hero_anchor_concreteness\",\n  \"critique_notes\": \"The Kobe reference is strong on time (4am) and place (Staples Center) but the habit description \u2014 'work one specific weakness into the floor' \u2014 is slightly abstract and invented rather than tied to a documented, concrete drill or routine. To hit a 10, it should name a specific, verifiable habit (e.g., 'post footwork drills' or 'mid-range pull-up repetitions from the elbow') so the anchor feels earned rather than atmospheric. The current phrasing gestures at specificity without fully landing it.\"\n}\n```",
+        "model_used": "claude-sonnet-4-6"
+      },
+      {
+        "candidate_id": 2,
+        "scores": {
+          "specificity": 9,
+          "command_density": 8,
+          "structural_arc_completeness": 9,
+          "cliche_freedom": 7,
+          "hero_anchor_concreteness": 8,
+          "voice_directness": 9
+        },
+        "overall_score": 8.41,
+        "weakest_axis": "cliche_freedom",
+        "critique_notes": "The phrase 'before the rest of the league had opened their eyes' edges into motivational-poster territory, and 'One section becomes the whole' has the rhythm of a self-help aphorism rather than earned specificity. The Kobe block is strong but 'the work was done before anyone else's day began' is a mild clich\u00e9 that softens what is otherwise a concrete image. Replace these lines with harder, more literal language tied to the spec itself or the Staples Center detail already established.",
+        "raw_response": "```json\n{\n  \"scores\": {\n    \"specificity\": 9,\n    \"command_density\": 8,\n    \"structural_arc_completeness\": 9,\n    \"cliche_freedom\": 7,\n    \"hero_anchor_concreteness\": 8,\n    \"voice_directness\": 9\n  },\n  \"weakest_axis\": \"cliche_freedom\",\n  \"critique_notes\": \"The phrase 'before the rest of the league had opened their eyes' edges into motivational-poster territory, and 'One section becomes the whole' has the rhythm of a self-help aphorism rather than earned specificity. The Kobe block is strong but 'the work was done before anyone else's day began' is a mild clich\u00e9 that softens what is otherwise a concrete image. Replace these lines with harder, more literal language tied to the spec itself or the Staples Center detail already established.\"\n}\n```",
+        "model_used": "claude-sonnet-4-6"
+      },
+      {
+        "candidate_id": 3,
+        "scores": {
+          "specificity": 10,
+          "command_density": 9,
+          "structural_arc_completeness": 10,
+          "cliche_freedom": 8,
+          "hero_anchor_concreteness": 9,
+          "voice_directness": 10
+        },
+        "overall_score": 9.41,
+        "weakest_axis": "cliche_freedom",
+        "critique_notes": "The line 'The rest of the day was built on that hour' edges into motivational-poster territory, and 'One section becomes the whole' has a faint aphoristic softness that feels slightly borrowed rather than earned. To fix, replace these with more concrete mechanical language that mirrors the spec-shipping context \u2014 e.g., describe what Kobe actually did after that session, or reframe the section-to-whole logic in terms of the OATH spec's actual structure rather than a general truth.",
+        "raw_response": "```json\n{\n  \"scores\": {\n    \"specificity\": 10,\n    \"command_density\": 9,\n    \"structural_arc_completeness\": 10,\n    \"cliche_freedom\": 8,\n    \"hero_anchor_concreteness\": 9,\n    \"voice_directness\": 10\n  },\n  \"weakest_axis\": \"cliche_freedom\",\n  \"critique_notes\": \"The line 'The rest of the day was built on that hour' edges into motivational-poster territory, and 'One section becomes the whole' has a faint aphoristic softness that feels slightly borrowed rather than earned. To fix, replace these with more concrete mechanical language that mirrors the spec-shipping context \u2014 e.g., describe what Kobe actually did after that session, or reframe the section-to-whole logic in terms of the OATH spec's actual structure rather than a general truth.\"\n}\n```",
+        "model_used": "claude-sonnet-4-6"
+      }
+    ],
+    "elapsed_seconds": 5.901
+  },
+  "stage_4_selection": {
+    "winner_candidate_id": 3,
+    "winner_critique": {
+      "candidate_id": 3,
+      "scores": {
+        "specificity": 10,
+        "command_density": 9,
+        "structural_arc_completeness": 10,
+        "cliche_freedom": 8,
+        "hero_anchor_concreteness": 9,
+        "voice_directness": 10
+      },
+      "overall_score": 9.41,
+      "weakest_axis": "cliche_freedom",
+      "critique_notes": "The line 'The rest of the day was built on that hour' edges into motivational-poster territory, and 'One section becomes the whole' has a faint aphoristic softness that feels slightly borrowed rather than earned. To fix, replace these with more concrete mechanical language that mirrors the spec-shipping context \u2014 e.g., describe what Kobe actually did after that session, or reframe the section-to-whole logic in terms of the OATH spec's actual structure rather than a general truth.",
+      "raw_response": "```json\n{\n  \"scores\": {\n    \"specificity\": 10,\n    \"command_density\": 9,\n    \"structural_arc_completeness\": 10,\n    \"cliche_freedom\": 8,\n    \"hero_anchor_concreteness\": 9,\n    \"voice_directness\": 10\n  },\n  \"weakest_axis\": \"cliche_freedom\",\n  \"critique_notes\": \"The line 'The rest of the day was built on that hour' edges into motivational-poster territory, and 'One section becomes the whole' has a faint aphoristic softness that feels slightly borrowed rather than earned. To fix, replace these with more concrete mechanical language that mirrors the spec-shipping context \u2014 e.g., describe what Kobe actually did after that session, or reframe the section-to-whole logic in terms of the OATH spec's actual structure rather than a general truth.\"\n}\n```",
+      "model_used": "claude-sonnet-4-6"
+    },
+    "passes_threshold": true,
+    "refinement_needed": false,
+    "selection_reason": "candidate 3 passed thresholds with overall 9.41/10 (best of 3 passing)",
+    "elapsed_seconds": 0.0
+  },
+  "stage_5_refinement": null,
+  "stage_6_judge": {
+    "final_quality_score": 8.7,
+    "would_get_user_out_of_bed": true,
+    "judge_notes": "The 'debt coming due' framing hits hard and the Kobe analogy is specific enough to feel earned rather than generic \u2014 isolating one weakness before anyone else laces up maps cleanly onto 'write the wedge section.' The closing sequence is a tight action chain that leaves no ambiguity about what to do next.",
+    "raw_response": "```json\n{\n  \"final_quality_score\": 8.7,\n  \"would_get_user_out_of_bed\": true,\n  \"judge_notes\": \"The 'debt coming due' framing hits hard and the Kobe analogy is specific enough to feel earned rather than generic \u2014 isolating one weakness before anyone else laces up maps cleanly onto 'write the wedge section.' The closing sequence is a tight action chain that leaves no ambiguity about what to do next.\"\n}\n```",
+    "model_used": "claude-sonnet-4-6",
+    "elapsed_seconds": 3.113
+  },
+  "stage_7_prosody": {
+    "input_script": "It is 5am.\nThe room is dark.\nNothing has moved yet.\n\nLast night you said you would ship the OATH v1 spec to GitHub\nand send Oliver the link before noon.\nNot eventually. Before noon.\nThat is not a goal.\nThat is a debt coming due.\n\nKobe targeted his weaknesses in an empty Staples Center at 4am.\nNot the full game. One thing.\nLeft hand. Mid-range. Footwork off the catch.\nOne thing, isolated, destroyed, before anyone else laced up.\nThe rest of the day was built on that hour.\n\nThis is the same hour.\n\nTrust the work.\n\nSixty minutes. Phone face down.\nOpen the spec doc.\nWrite the wedge section.\nOne section becomes the whole.\nThe whole becomes the link.\nThe link lands in Oliver's inbox before noon.\n\nNothing else exists until the wedge section is done.\n\nOpen it.",
+    "marked_up_script": "It is 5am.\nThe room is dark.\nNothing has moved yet.\n<break time=\"1.5s\" />\nLast night you said you would ship the OATH v1 spec to GitHub\nand send Oliver the link before noon.\nNot eventually. Before noon.\nThat is not a goal.\nThat is a debt coming due.\n<break time=\"1.5s\" />\nKobe targeted his weaknesses in an empty Staples Center at 4am.\nNot the full game. One thing.\nLeft hand. Mid-range. Footwork off the catch.\nOne thing, isolated, destroyed, before anyone else laced up.\nThe rest of the day was built on that hour.\n<break time=\"1.5s\" />\nThis is the same hour.\n<break time=\"1.5s\" />\nTrust the work.\n<break time=\"1.5s\" />\nSixty minutes. Phone face down.\nOpen the spec doc.\nWrite the wedge section.\nOne section becomes the whole.\nThe whole becomes the link.\nThe link lands in Oliver's inbox before noon.\n<break time=\"1.5s\" />\nNothing else exists until the wedge section is done.\n<break time=\"1.5s\" />\nOpen it.",
+    "break_tag_count": 7,
+    "mode_tuning_applied": "hardest_work",
+    "elapsed_seconds": 0.0
+  },
+  "stage_8_synthesis": {
+    "output_path": "experiments/04-multi-pass-refinement/final_audio.mp3",
+    "voice_preset": "the_closer",
+    "voice_id": "pNInz6obpgDQGcFmaJgB",
+    "voice_label": "Adam",
+    "model_id": "eleven_flash_v2_5",
+    "voice_settings_used": {
+      "stability": 0.6,
+      "similarity_boost": 0.8,
+      "style": 0.2,
+      "use_speaker_boost": true
+    },
+    "audio_bytes": 1085066,
+    "estimated_duration_seconds": 66.2,
+    "elapsed_seconds": 2.344
+  },
+  "stage_9_music_bed": {
+    "output_path": "experiments/04-multi-pass-refinement/final_audio.mp3",
+    "music_bed_used": null,
+    "mix_applied": false,
+    "stub_reason": "music bed mixing deferred to v1.1 pending pre-licensed instrumental beds. see stage docstring for the v1.1 plan.",
+    "input_mode": "hardest_work",
+    "elapsed_seconds": 0.0
+  }
+}

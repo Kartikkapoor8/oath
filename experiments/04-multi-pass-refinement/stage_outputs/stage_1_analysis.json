@@ -1,0 +1,12 @@
+{
+  "plan": {
+    "tone_notes": "This user has a concrete deliverable with a hard deadline and a specific first action \u2014 the tone should be cold, focused precision, not motivational warmth. Think locker room at 4am, not halftime speech.",
+    "hero_anchor_strategy": "Reference Kobe's documented practice of arriving at the Staples Center at 4am to work on specific weaknesses in isolation \u2014 not general greatness, but the deliberate targeting of one thing before the world woke up. This maps directly to the user shipping one specific section of one specific doc before noon, while others haven't started their day.",
+    "grounding_phrase_placement": "After the hero anchor and before the closing command \u2014 it functions as the hinge between what Kobe knew and what the user must now do. The phrase 'trust the work' lands hardest when the motivation has already been established and the only thing left is execution.",
+    "command_structure": "Two-beat imperative with a physical escalation \u2014 'open it. write the wedge.' The period between beats forces a pause that mimics deliberate action, not urgency.",
+    "estimated_complexity": "medium",
+    "raw_response": "```json\n{\n  \"tone_notes\": \"This user has a concrete deliverable with a hard deadline and a specific first action \u2014 the tone should be cold, focused precision, not motivational warmth. Think locker room at 4am, not halftime speech.\",\n  \"hero_anchor_strategy\": \"Reference Kobe's documented practice of arriving at the Staples Center at 4am to work on specific weaknesses in isolation \u2014 not general greatness, but the deliberate targeting of one thing before the world woke up. This maps directly to the user shipping one specific section of one specific doc before noon, while others haven't started their day.\",\n  \"grounding_phrase_placement\": \"After the hero anchor and before the closing command \u2014 it functions as the hinge between what Kobe knew and what the user must now do. The phrase 'trust the work' lands hardest when the motivation has already been established and the only thing left is execution.\",\n  \"command_structure\": \"Two-beat imperative with a physical escalation \u2014 'open it. write the wedge.' The period between beats forces a pause that mimics deliberate action, not urgency.\",\n  \"estimated_complexity\": \"medium\"\n}\n```",
+    "model_used": "claude-sonnet-4-6"
+  },
+  "elapsed_seconds": 8.1
+}

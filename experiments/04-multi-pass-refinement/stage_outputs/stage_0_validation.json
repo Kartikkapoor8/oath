@@ -1,0 +1,23 @@
+{
+  "input": {
+    "mode": "hardest_work",
+    "intent": "ship the OATH v1 spec to github and send Oliver the link before noon",
+    "first_action": "open the spec doc and write the wedge section",
+    "hero": "Kobe Bryant",
+    "phrase": "trust the work",
+    "variant": "default",
+    "voice": "the_closer",
+    "target_duration_seconds": 60
+  },
+  "normalized": {
+    "mode": "hardest_work",
+    "intent": "ship the OATH v1 spec to github and send Oliver the link before noon",
+    "first_action": "open the spec doc and write the wedge section",
+    "hero": "Kobe Bryant",
+    "phrase": "trust the work",
+    "variant": "default",
+    "voice": "the_closer",
+    "target_duration_seconds": 60
+  },
+  "elapsed_seconds": 0.0
+}

@@ -1,0 +1,44 @@
+{
+  "candidates": [
+    {
+      "candidate_id": 1,
+      "script": "It is 5am.\nThe room is dark.\nYou are already behind.\n\nLast night you said you would ship the OATH v1 spec to GitHub\nand send Oliver the link before noon.\nNot a plan.\nA contract.\n\nKobe was at Staples Center at 4am.\nNot for the crowd.\nNot for the highlight.\nTo work one specific weakness into the floor\nbefore anyone else laced up.\nOne thing. Isolated. Repeated.\nDone before the world started its day.\n\nThis is the same thing.\n\nTrust the work.\n\nSixty minutes. Phone face down.\nOpen the spec doc.\nWrite the wedge section.\nOne section becomes the whole.\nThe whole becomes the link.\nThe link goes to Oliver before noon.\n\nNothing else exists until the wedge section is done.\n\nOpen it.",
+      "word_count": 124,
+      "estimated_duration_seconds": 50,
+      "internal_self_check": 9,
+      "temperature": 0.6,
+      "violations": [],
+      "raw_response": "{\n  \"script\": \"It is 5am.\\nThe room is dark.\\nYou are already behind.\\n\\nLast night you said you would ship the OATH v1 spec to GitHub\\nand send Oliver the link before noon.\\nNot a plan.\\nA contract.\\n\\nKobe was at Staples Center at 4am.\\nNot for the crowd.\\nNot for the highlight.\\nTo work one specific weakness into the floor\\nbefore anyone else laced up.\\nOne thing. Isolated. Repeated.\\nDone before the world started its day.\\n\\nThis is the same thing.\\n\\nTrust the work.\\n\\nSixty minutes. Phone face down.\\nOpen the spec doc.\\nWrite the wedge section.\\nOne section becomes the whole.\\nThe whole becomes the link.\\nThe link goes to Oliver before noon.\\n\\nNothing else exists until the wedge section is done.\\n\\nOpen it.\",\n  \"estimated_duration_seconds\": 58,\n  \"internal_self_check\": 9\n}",
+      "model_used": "claude-sonnet-4-6"
+    },
+    {
+      "candidate_id": 2,
+      "script": "It is 5am.\nThe room is dark.\nYou are already behind.\n\nLast night you said you would ship the OATH v1 spec to GitHub\nand send Oliver the link before noon.\nNot a thought. Not an intention.\nA contract.\n\nKobe was at the Staples Center at 4am.\nNot for the game. Not for the cameras.\nFor one weakness.\nOne specific thing, worked on alone, in an empty building,\nbefore the rest of the league had opened their eyes.\nThe work was done before anyone else's day began.\n\nThis is the same building.\nThis is the same hour.\n\nTrust the work.\n\nSixty minutes. Phone face down.\nOpen the spec doc.\nWrite the wedge section.\nOne section becomes the whole.\nThe whole becomes the link.\nThe link lands in Oliver's inbox before noon.\n\nNothing else exists until the wedge section is done.\n\nOpen it.",
+      "word_count": 144,
+      "estimated_duration_seconds": 58,
+      "internal_self_check": 9,
+      "temperature": 0.8,
+      "violations": [],
+      "raw_response": "{\n  \"script\": \"It is 5am.\\nThe room is dark.\\nYou are already behind.\\n\\nLast night you said you would ship the OATH v1 spec to GitHub\\nand send Oliver the link before noon.\\nNot a thought. Not an intention.\\nA contract.\\n\\nKobe was at the Staples Center at 4am.\\nNot for the game. Not for the cameras.\\nFor one weakness.\\nOne specific thing, worked on alone, in an empty building,\\nbefore the rest of the league had opened their eyes.\\nThe work was done before anyone else's day began.\\n\\nThis is the same building.\\nThis is the same hour.\\n\\nTrust the work.\\n\\nSixty minutes. Phone face down.\\nOpen the spec doc.\\nWrite the wedge section.\\nOne section becomes the whole.\\nThe whole becomes the link.\\nThe link lands in Oliver's inbox before noon.\\n\\nNothing else exists until the wedge section is done.\\n\\nOpen it.\",\n  \"estimated_duration_seconds\": 58,\n  \"internal_self_check\": 9\n}",
+      "model_used": "claude-sonnet-4-6"
+    },
+    {
+      "candidate_id": 3,
+      "script": "It is 5am.\nThe room is dark.\nNothing has moved yet.\n\nLast night you said you would ship the OATH v1 spec to GitHub\nand send Oliver the link before noon.\nNot eventually. Before noon.\nThat is not a goal.\nThat is a debt coming due.\n\nKobe targeted his weaknesses in an empty Staples Center at 4am.\nNot the full game. One thing.\nLeft hand. Mid-range. Footwork off the catch.\nOne thing, isolated, destroyed, before anyone else laced up.\nThe rest of the day was built on that hour.\n\nThis is the same hour.\n\nTrust the work.\n\nSixty minutes. Phone face down.\nOpen the spec doc.\nWrite the wedge section.\nOne section becomes the whole.\nThe whole becomes the link.\nThe link lands in Oliver's inbox before noon.\n\nNothing else exists until the wedge section is done.\n\nOpen it.",
+      "word_count": 141,
+      "estimated_duration_seconds": 56,
+      "internal_self_check": 9,
+      "temperature": 1.0,
+      "violations": [],
+      "raw_response": "{\n  \"script\": \"It is 5am.\\nThe room is dark.\\nNothing has moved yet.\\n\\nLast night you said you would ship the OATH v1 spec to GitHub\\nand send Oliver the link before noon.\\nNot eventually. Before noon.\\nThat is not a goal.\\nThat is a debt coming due.\\n\\nKobe targeted his weaknesses in an empty Staples Center at 4am.\\nNot the full game. One thing.\\nLeft hand. Mid-range. Footwork off the catch.\\nOne thing, isolated, destroyed, before anyone else laced up.\\nThe rest of the day was built on that hour.\\n\\nThis is the same hour.\\n\\nTrust the work.\\n\\nSixty minutes. Phone face down.\\nOpen the spec doc.\\nWrite the wedge section.\\nOne section becomes the whole.\\nThe whole becomes the link.\\nThe link lands in Oliver's inbox before noon.\\n\\nNothing else exists until the wedge section is done.\\n\\nOpen it.\",\n  \"estimated_duration_seconds\": 58,\n  \"internal_self_check\": 9\n}",
+      "model_used": "claude-sonnet-4-6"
+    }
+  ],
+  "elapsed_seconds": 5.652,
+  "n": 3,
+  "temperatures": [
+    0.6,
+    0.8,
+    1.0
+  ]
+}

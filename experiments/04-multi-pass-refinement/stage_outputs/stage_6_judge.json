@@ -1,0 +1,8 @@
+{
+  "final_quality_score": 8.7,
+  "would_get_user_out_of_bed": true,
+  "judge_notes": "The 'debt coming due' framing hits hard and the Kobe analogy is specific enough to feel earned rather than generic \u2014 isolating one weakness before anyone else laces up maps cleanly onto 'write the wedge section.' The closing sequence is a tight action chain that leaves no ambiguity about what to do next.",
+  "raw_response": "```json\n{\n  \"final_quality_score\": 8.7,\n  \"would_get_user_out_of_bed\": true,\n  \"judge_notes\": \"The 'debt coming due' framing hits hard and the Kobe analogy is specific enough to feel earned rather than generic \u2014 isolating one weakness before anyone else laces up maps cleanly onto 'write the wedge section.' The closing sequence is a tight action chain that leaves no ambiguity about what to do next.\"\n}\n```",
+  "model_used": "claude-sonnet-4-6",
+  "elapsed_seconds": 3.113
+}

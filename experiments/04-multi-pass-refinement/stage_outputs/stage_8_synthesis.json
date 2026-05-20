@@ -1,0 +1,16 @@
+{
+  "output_path": "experiments/04-multi-pass-refinement/final_audio.mp3",
+  "voice_preset": "the_closer",
+  "voice_id": "pNInz6obpgDQGcFmaJgB",
+  "voice_label": "Adam",
+  "model_id": "eleven_flash_v2_5",
+  "voice_settings_used": {
+    "stability": 0.6,
+    "similarity_boost": 0.8,
+    "style": 0.2,
+    "use_speaker_boost": true
+  },
+  "audio_bytes": 1085066,
+  "estimated_duration_seconds": 66.2,
+  "elapsed_seconds": 2.344
+}

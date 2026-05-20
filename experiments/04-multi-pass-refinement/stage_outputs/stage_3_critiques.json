@@ -1,0 +1,53 @@
+{
+  "critiques": [
+    {
+      "candidate_id": 1,
+      "scores": {
+        "specificity": 9,
+        "command_density": 8,
+        "structural_arc_completeness": 10,
+        "cliche_freedom": 8,
+        "hero_anchor_concreteness": 8,
+        "voice_directness": 9
+      },
+      "overall_score": 8.71,
+      "weakest_axis": "hero_anchor_concreteness",
+      "critique_notes": "The Kobe reference is strong on time (4am) and place (Staples Center) but the habit description \u2014 'work one specific weakness into the floor' \u2014 is slightly abstract and invented rather than tied to a documented, concrete drill or routine. To hit a 10, it should name a specific, verifiable habit (e.g., 'post footwork drills' or 'mid-range pull-up repetitions from the elbow') so the anchor feels earned rather than atmospheric. The current phrasing gestures at specificity without fully landing it.",
+      "raw_response": "```json\n{\n  \"scores\": {\n    \"specificity\": 9,\n    \"command_density\": 8,\n    \"structural_arc_completeness\": 10,\n    \"cliche_freedom\": 8,\n    \"hero_anchor_concreteness\": 8,\n    \"voice_directness\": 9\n  },\n  \"weakest_axis\": \"hero_anchor_concreteness\",\n  \"critique_notes\": \"The Kobe reference is strong on time (4am) and place (Staples Center) but the habit description \u2014 'work one specific weakness into the floor' \u2014 is slightly abstract and invented rather than tied to a documented, concrete drill or routine. To hit a 10, it should name a specific, verifiable habit (e.g., 'post footwork drills' or 'mid-range pull-up repetitions from the elbow') so the anchor feels earned rather than atmospheric. The current phrasing gestures at specificity without fully landing it.\"\n}\n```",
+      "model_used": "claude-sonnet-4-6"
+    },
+    {
+      "candidate_id": 2,
+      "scores": {
+        "specificity": 9,
+        "command_density": 8,
+        "structural_arc_completeness": 9,
+        "cliche_freedom": 7,
+        "hero_anchor_concreteness": 8,
+        "voice_directness": 9
+      },
+      "overall_score": 8.41,
+      "weakest_axis": "cliche_freedom",
+      "critique_notes": "The phrase 'before the rest of the league had opened their eyes' edges into motivational-poster territory, and 'One section becomes the whole' has the rhythm of a self-help aphorism rather than earned specificity. The Kobe block is strong but 'the work was done before anyone else's day began' is a mild clich\u00e9 that softens what is otherwise a concrete image. Replace these lines with harder, more literal language tied to the spec itself or the Staples Center detail already established.",
+      "raw_response": "```json\n{\n  \"scores\": {\n    \"specificity\": 9,\n    \"command_density\": 8,\n    \"structural_arc_completeness\": 9,\n    \"cliche_freedom\": 7,\n    \"hero_anchor_concreteness\": 8,\n    \"voice_directness\": 9\n  },\n  \"weakest_axis\": \"cliche_freedom\",\n  \"critique_notes\": \"The phrase 'before the rest of the league had opened their eyes' edges into motivational-poster territory, and 'One section becomes the whole' has the rhythm of a self-help aphorism rather than earned specificity. The Kobe block is strong but 'the work was done before anyone else's day began' is a mild clich\u00e9 that softens what is otherwise a concrete image. Replace these lines with harder, more literal language tied to the spec itself or the Staples Center detail already established.\"\n}\n```",
+      "model_used": "claude-sonnet-4-6"
+    },
+    {
+      "candidate_id": 3,
+      "scores": {
+        "specificity": 10,
+        "command_density": 9,
+        "structural_arc_completeness": 10,
+        "cliche_freedom": 8,
+        "hero_anchor_concreteness": 9,
+        "voice_directness": 10
+      },
+      "overall_score": 9.41,
+      "weakest_axis": "cliche_freedom",
+      "critique_notes": "The line 'The rest of the day was built on that hour' edges into motivational-poster territory, and 'One section becomes the whole' has a faint aphoristic softness that feels slightly borrowed rather than earned. To fix, replace these with more concrete mechanical language that mirrors the spec-shipping context \u2014 e.g., describe what Kobe actually did after that session, or reframe the section-to-whole logic in terms of the OATH spec's actual structure rather than a general truth.",
+      "raw_response": "```json\n{\n  \"scores\": {\n    \"specificity\": 10,\n    \"command_density\": 9,\n    \"structural_arc_completeness\": 10,\n    \"cliche_freedom\": 8,\n    \"hero_anchor_concreteness\": 9,\n    \"voice_directness\": 10\n  },\n  \"weakest_axis\": \"cliche_freedom\",\n  \"critique_notes\": \"The line 'The rest of the day was built on that hour' edges into motivational-poster territory, and 'One section becomes the whole' has a faint aphoristic softness that feels slightly borrowed rather than earned. To fix, replace these with more concrete mechanical language that mirrors the spec-shipping context \u2014 e.g., describe what Kobe actually did after that session, or reframe the section-to-whole logic in terms of the OATH spec's actual structure rather than a general truth.\"\n}\n```",
+      "model_used": "claude-sonnet-4-6"
+    }
+  ],
+  "elapsed_seconds": 5.901
+}

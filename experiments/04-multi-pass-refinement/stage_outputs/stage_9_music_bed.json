@@ -1,0 +1,8 @@
+{
+  "output_path": "experiments/04-multi-pass-refinement/final_audio.mp3",
+  "music_bed_used": null,
+  "mix_applied": false,
+  "stub_reason": "music bed mixing deferred to v1.1 pending pre-licensed instrumental beds. see stage docstring for the v1.1 plan.",
+  "input_mode": "hardest_work",
+  "elapsed_seconds": 0.0
+}
