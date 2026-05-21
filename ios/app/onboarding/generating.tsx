@@ -67,8 +67,18 @@ interface TraceEntry {
   elapsedMs?: number;
 }
 
+// React Native's fetch buffers the full response before our parser sees
+// any events (see lib/api/oath-engine.ts for why). To keep the UI feeling
+// alive during the ~27s engine run, we tick a fake stage every
+// FAKE_TICK_MS so the user sees stages advance even though the network
+// payload only arrives at the end. When the real final event lands, we
+// snap to "ready." and route — fake catches the real instantly.
+const FAKE_TICK_MS = 2700; // 10 stages * 2.7s ≈ engine's 27s
+
+type Phase = 'running' | 'complete' | 'error';
+
 export default function Generating() {
-  const [stageText, setStageText] = useState(STAGE_TEXT.stage_0_validate);
+  const [phase, setPhase] = useState<Phase>('running');
   const [currentStageIdx, setCurrentStageIdx] = useState(0);
   const [trace, setTrace] = useState<TraceEntry[]>([]);
   const [showTrace, setShowTrace] = useState(false);
@@ -78,14 +88,31 @@ export default function Generating() {
   const [, setTick] = useState(0);
   const abortRef = useRef<AbortController | null>(null);
 
+  // Wall-clock tick for the "stage X · Ys" caption
   useEffect(() => {
+    if (phase !== 'running') return;
     const interval = setInterval(() => setTick((t) => t + 1), 100);
     return () => clearInterval(interval);
-  }, []);
+  }, [phase]);
+
+  // Fake stage advancement — drives the visible stage text/index while we
+  // wait for the engine to finish.
+  useEffect(() => {
+    if (phase !== 'running') return;
+    const interval = setInterval(() => {
+      setCurrentStageIdx((prev) => Math.min(prev + 1, STAGE_ORDER.length - 1));
+    }, FAKE_TICK_MS);
+    return () => clearInterval(interval);
+  }, [phase]);
+
+  const stageText =
+    phase === 'complete'
+      ? STAGE_TEXT.final
+      : STAGE_TEXT[STAGE_ORDER[currentStageIdx]] ?? STAGE_TEXT.stage_0_validate;
 
   const runPipeline = useCallback(async () => {
     setError(null);
-    setStageText(STAGE_TEXT.stage_0_validate);
+    setPhase('running');
     setCurrentStageIdx(0);
     setTrace([]);
     setStartTime(Date.now());
@@ -115,11 +142,9 @@ export default function Generating() {
           break;
         }
         const evt = value as StageEvent;
-        const stageIdx = STAGE_ORDER.indexOf(evt.stage);
-        if (stageIdx >= 0) setCurrentStageIdx(stageIdx);
-        if (evt.status === 'running' && STAGE_TEXT[evt.stage]) {
-          setStageText(STAGE_TEXT[evt.stage]);
-        }
+        // Trace records every real event but DOESN'T drive the visual stage
+        // (the fake timer does). This means the trace can be inspected via
+        // the "what's happening" expander to see real elapsed_ms per stage.
         setTrace((prev) => [
           ...prev,
           { stage: evt.stage, status: evt.status, elapsedMs: evt.elapsed_ms },
@@ -162,14 +187,15 @@ export default function Generating() {
         hasOnboarded: true,
       });
 
-      setStageText(STAGE_TEXT.final);
-      setCurrentStageIdx(STAGE_ORDER.length);
+      setPhase('complete');
+      setCurrentStageIdx(STAGE_ORDER.length - 1);
 
       setTimeout(() => {
         router.replace('/onboarding/first-ritual');
       }, 500);
     } catch (err) {
       if (controller.signal.aborted) return;
+      setPhase('error');
       if (err instanceof PipelineError) setError(err);
       else
         setError(
