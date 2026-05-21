@@ -11,6 +11,12 @@ export interface UserPreferences {
   hasPaid: boolean;
   tomorrowIntent: string | null;
   tomorrowFirstAction: string | null;
+
+  // First ritual generated during onboarding — played on /onboarding/first-ritual.
+  firstRitualAudioUrl: string | null;
+  firstRitualScript: string | null;
+  firstRitualVoice: VoicePreset | null;
+  firstRitualFinalScore: number | null;
 }
 
 const STORAGE_KEY = 'oath_user_preferences_v1';
@@ -25,6 +31,10 @@ const defaults: UserPreferences = {
   hasPaid: false,
   tomorrowIntent: null,
   tomorrowFirstAction: null,
+  firstRitualAudioUrl: null,
+  firstRitualScript: null,
+  firstRitualVoice: null,
+  firstRitualFinalScore: null,
 };
 
 export async function getPreferences(): Promise<UserPreferences> {
