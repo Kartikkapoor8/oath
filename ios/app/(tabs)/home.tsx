@@ -1,16 +1,19 @@
 import { useCallback, useEffect, useState } from 'react';
 import {
   Modal,
+  Platform,
   Pressable,
   ScrollView,
-  TextInput,
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFocusEffect, router } from 'expo-router';
-import { AlarmClock, MoonStar } from 'lucide-react-native';
+import { AlarmClock, MoonStar, Zap, Pencil } from 'lucide-react-native';
+import DateTimePicker, {
+  type DateTimePickerEvent,
+} from '@react-native-community/datetimepicker';
 import { Button, Card, Text } from '@/components/primitives';
-import { colors, fonts, fontSize, radius, spacing } from '@/lib/design-system';
+import { colors, fonts, radius, spacing } from '@/lib/design-system';
 import {
   getPreferences,
   setPreferences,
@@ -24,16 +27,44 @@ import {
   timeOfDayGreeting,
   voiceLabel,
 } from '@/lib/helpers/onboarding-defaults';
+import {
+  getPreGenStatus,
+  preGenerateNextRitual,
+  subscribePreGen,
+  type PreGenStatus,
+} from '@/lib/rituals/pre-generation';
+import { scheduleDailyAlarm, scheduleTestAlarm } from '@/lib/alarms/scheduler';
+
+function parseAlarm(time: string | null): Date {
+  const d = new Date();
+  if (!time) {
+    d.setHours(6, 0, 0, 0);
+    return d;
+  }
+  const [hStr, mStr] = time.split(':');
+  d.setHours(parseInt(hStr, 10) || 6, parseInt(mStr, 10) || 0, 0, 0);
+  return d;
+}
+
+function format24h(d: Date): string {
+  const h = d.getHours().toString().padStart(2, '0');
+  const m = d.getMinutes().toString().padStart(2, '0');
+  return `${h}:${m}`;
+}
 
 export default function Home() {
   const [prefs, setPrefs] = useState<UserPreferences | null>(null);
-  const [showCommitmentModal, setShowCommitmentModal] = useState(false);
-  const [commitmentDraft, setCommitmentDraft] = useState('');
+  const [preGenStatus, setPreGenStatus] = useState<PreGenStatus>(
+    getPreGenStatus(),
+  );
+  const [timeEditOpen, setTimeEditOpen] = useState(false);
+  const [pendingAlarm, setPendingAlarm] = useState<Date>(parseAlarm(null));
+  const [testFeedback, setTestFeedback] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     const p = await getPreferences();
     setPrefs(p);
-    setCommitmentDraft(p.tomorrowFirstAction ?? '');
+    setPendingAlarm(parseAlarm(p.alarmTime));
   }, []);
 
   useFocusEffect(
@@ -44,6 +75,11 @@ export default function Home() {
 
   useEffect(() => {
     load();
+    const unsub = subscribePreGen((s) => {
+      setPreGenStatus(s);
+      if (s === 'success') load();
+    });
+    return unsub;
   }, [load]);
 
   if (!prefs) {
@@ -54,12 +90,35 @@ export default function Home() {
     prefs.hero ? `, ${firstName(prefs.hero).toLowerCase()}` : ''
   }`;
 
-  const saveCommitment = async () => {
-    await setPreferences({
-      tomorrowFirstAction: commitmentDraft.trim() || null,
-    });
-    setShowCommitmentModal(false);
+  const ritualBadge = computeRitualBadge(prefs, preGenStatus);
+
+  const handleSaveTime = async (_: DateTimePickerEvent, picked?: Date) => {
+    if (!picked) return;
+    setPendingAlarm(picked);
+  };
+
+  const commitTime = async () => {
+    const next = format24h(pendingAlarm);
+    await setPreferences({ alarmTime: next });
+    if (prefs.notificationsPermission === 'granted') {
+      try {
+        await scheduleDailyAlarm(next);
+      } catch (err) {
+        console.warn('reschedule failed', err);
+      }
+    }
+    setTimeEditOpen(false);
     load();
+  };
+
+  const handleFireTestAlarm = async () => {
+    try {
+      await scheduleTestAlarm(30);
+      setTestFeedback('test alarm fires in 30s — background the app');
+    } catch (err) {
+      setTestFeedback('failed to schedule — check notification permissions');
+    }
+    setTimeout(() => setTestFeedback(null), 6000);
   };
 
   return (
@@ -96,13 +155,33 @@ export default function Home() {
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              gap: spacing[3],
+              justifyContent: 'space-between',
             }}
           >
-            <AlarmClock color={colors.amber.DEFAULT} size={24} strokeWidth={2} />
-            <Text variant="h3" color={colors.fg.DEFAULT}>
-              tomorrow’s alarm
-            </Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: spacing[3],
+              }}
+            >
+              <AlarmClock
+                color={colors.amber.DEFAULT}
+                size={24}
+                strokeWidth={2}
+              />
+              <Text variant="h3" color={colors.fg.DEFAULT}>
+                tomorrow&apos;s alarm
+              </Text>
+            </View>
+            <Pressable
+              onPress={() => setTimeEditOpen(true)}
+              hitSlop={10}
+              accessibilityRole="button"
+              accessibilityLabel="Edit alarm time"
+            >
+              <Pencil color={colors.fg.muted} size={18} />
+            </Pressable>
           </View>
 
           <Text
@@ -127,19 +206,44 @@ export default function Home() {
             </Text>
           </View>
 
-          <View style={{ marginTop: spacing[5] }}>
-            <Button
-              label="edit ritual settings"
-              variant="secondary"
-              onPress={() => router.push('/(tabs)/settings')}
-            />
-          </View>
+          {ritualBadge ? (
+            <View
+              style={{
+                marginTop: spacing[4],
+                flexDirection: 'row',
+                gap: spacing[2],
+                alignItems: 'center',
+              }}
+            >
+              <View
+                style={{
+                  width: 8,
+                  height: 8,
+                  borderRadius: 4,
+                  backgroundColor: ritualBadge.color,
+                }}
+              />
+              <Text variant="caption" color={ritualBadge.color}>
+                {ritualBadge.label}
+              </Text>
+            </View>
+          ) : null}
+
+          {prefs.notificationsPermission !== 'granted' ? (
+            <Text
+              variant="caption"
+              color={colors.error}
+              style={{ marginTop: spacing[3] }}
+            >
+              NOTIFICATIONS OFF · ALARM WILL NOT FIRE
+            </Text>
+          ) : null}
         </Card>
 
         <Pressable
-          onPress={() => setShowCommitmentModal(true)}
+          onPress={() => router.push('/modals/intent-capture')}
           accessibilityRole="button"
-          accessibilityLabel="Edit tomorrow's commitment"
+          accessibilityLabel="Edit tonight's commitment"
         >
           <Card padding={5}>
             <View
@@ -149,9 +253,13 @@ export default function Home() {
                 gap: spacing[3],
               }}
             >
-              <MoonStar color={colors.amber.DEFAULT} size={20} strokeWidth={2} />
+              <MoonStar
+                color={colors.amber.DEFAULT}
+                size={20}
+                strokeWidth={2}
+              />
               <Text variant="h3" color={colors.fg.DEFAULT}>
-                tonight’s commitment
+                tonight&apos;s commitment
               </Text>
             </View>
             {prefs.tomorrowFirstAction ? (
@@ -170,42 +278,98 @@ export default function Home() {
                   color={colors.fg.muted}
                   style={{ fontStyle: 'italic' }}
                 >
-                  what’s tomorrow’s first action?
+                  what&apos;s tomorrow&apos;s commitment?
                 </Text>
                 <Text variant="caption" color={colors.fg.subtle}>
-                  tap to add
+                  tap to set
                 </Text>
               </View>
             )}
           </Card>
         </Pressable>
 
+        <Card
+          padding={5}
+          style={{
+            borderStyle: 'dashed',
+            borderColor: colors.border.medium,
+          }}
+        >
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: spacing[3],
+            }}
+          >
+            <Zap color={colors.fg.muted} size={20} strokeWidth={2} />
+            <Text variant="h3" color={colors.fg.muted}>
+              test alarm
+            </Text>
+          </View>
+          <Text
+            variant="bodySm"
+            color={colors.fg.subtle}
+            style={{ marginTop: spacing[2] }}
+          >
+            fires a notification in 30 seconds. background the app to see
+            the lock-screen alert; tap to enter the ritual.
+          </Text>
+          <View style={{ marginTop: spacing[3] }}>
+            <Button
+              label="fire test alarm"
+              variant="secondary"
+              onPress={handleFireTestAlarm}
+            />
+          </View>
+          {testFeedback ? (
+            <Text
+              variant="caption"
+              color={colors.amber.bright}
+              style={{ marginTop: spacing[3] }}
+            >
+              {testFeedback}
+            </Text>
+          ) : null}
+        </Card>
+
         <View style={{ gap: spacing[3], marginTop: spacing[2] }}>
           <Text variant="caption" color={colors.fg.muted}>
             RECENT RITUALS
           </Text>
           <Card padding={5}>
-            <Text variant="body" color={colors.fg.muted}>
-              your first ritual was just generated. you’ll see your history
-              here after tomorrow morning.
-            </Text>
+            {prefs.lastRitualCompletedAt ? (
+              <View style={{ gap: spacing[1] }}>
+                <Text variant="body" color={colors.fg.DEFAULT}>
+                  last ritual completed
+                </Text>
+                <Text variant="caption" color={colors.fg.subtle}>
+                  {new Date(prefs.lastRitualCompletedAt).toLocaleString()}
+                </Text>
+              </View>
+            ) : (
+              <Text variant="body" color={colors.fg.muted}>
+                your first ritual is queued. you&apos;ll see your history
+                here after tomorrow morning.
+              </Text>
+            )}
           </Card>
         </View>
 
         <View style={{ marginTop: spacing[4] }}>
           <Button
-            label="play a ritual now"
+            label="generate a fresh ritual now"
             variant="ghost"
-            onPress={() => router.push('/onboarding/generating')}
+            onPress={() => preGenerateNextRitual()}
           />
         </View>
       </ScrollView>
 
       <Modal
-        visible={showCommitmentModal}
+        visible={timeEditOpen}
         transparent
         animationType="slide"
-        onRequestClose={() => setShowCommitmentModal(false)}
+        onRequestClose={() => setTimeEditOpen(false)}
       >
         <View
           style={{
@@ -225,50 +389,36 @@ export default function Home() {
           >
             <View style={{ gap: spacing[2] }}>
               <Text variant="caption" color={colors.fg.muted}>
-                TOMORROW
+                ALARM TIME
               </Text>
               <Text variant="h2" color={colors.fg.DEFAULT}>
-                what’s the first action?
-              </Text>
-              <Text variant="body" color={colors.fg.muted}>
-                one specific thing future you will do after the ritual plays.
+                when do you wake up?
               </Text>
             </View>
-
-            <View
-              style={{
-                backgroundColor: colors.bg.raised,
-                borderRadius: radius.xl,
-                paddingHorizontal: spacing[4],
-                paddingVertical: spacing[3],
-                borderColor: colors.border.subtle,
-                borderWidth: 1,
-              }}
-            >
-              <TextInput
-                value={commitmentDraft}
-                onChangeText={setCommitmentDraft}
-                placeholder="open the doc and write the intro"
-                placeholderTextColor={colors.fg.dim}
-                multiline
-                maxLength={140}
-                selectionColor={colors.amber.DEFAULT}
-                keyboardAppearance="dark"
-                style={{
-                  color: colors.fg.DEFAULT,
-                  fontFamily: fonts.body,
-                  fontSize: fontSize.body,
-                  minHeight: 80,
-                }}
+            {Platform.OS === 'ios' ? (
+              <DateTimePicker
+                value={pendingAlarm}
+                mode="time"
+                display="spinner"
+                onChange={handleSaveTime}
+                themeVariant="dark"
+                textColor={colors.fg.DEFAULT}
+                minuteInterval={5}
+                style={{ alignSelf: 'stretch' }}
               />
-            </View>
-
+            ) : (
+              <DateTimePicker
+                value={pendingAlarm}
+                mode="time"
+                onChange={handleSaveTime}
+              />
+            )}
             <View style={{ gap: spacing[2] }}>
-              <Button label="save" onPress={saveCommitment} />
+              <Button label="save" onPress={commitTime} />
               <Button
                 label="cancel"
                 variant="ghost"
-                onPress={() => setShowCommitmentModal(false)}
+                onPress={() => setTimeEditOpen(false)}
               />
             </View>
           </View>
@@ -276,4 +426,23 @@ export default function Home() {
       </Modal>
     </SafeAreaView>
   );
+}
+
+function computeRitualBadge(
+  prefs: UserPreferences,
+  status: PreGenStatus,
+): { label: string; color: string } | null {
+  if (status === 'running') {
+    return { label: 'GENERATING TOMORROW’S RITUAL...', color: colors.amber.bright };
+  }
+  if (status === 'error') {
+    return { label: 'GENERATION FAILED · TAP TO RETRY', color: colors.error };
+  }
+  if (prefs.nextRitualPath) {
+    return { label: 'RITUAL READY FOR ALARM', color: colors.success };
+  }
+  if (prefs.tomorrowFirstAction) {
+    return { label: 'NO CACHED RITUAL · TAP TO REGENERATE', color: colors.warn };
+  }
+  return null;
 }
