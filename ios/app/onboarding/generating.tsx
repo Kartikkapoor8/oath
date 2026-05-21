@@ -29,6 +29,7 @@ import {
   getIntentText,
   getDefaultFirstAction,
 } from '@/lib/helpers/onboarding-defaults';
+import { dataUrlToFileUri } from '@/lib/audio/dataUrlToFile';
 
 const STAGE_TEXT: Record<StageId, string> = {
   stage_0_validate: 'preparing...',
@@ -133,11 +134,31 @@ export default function Generating() {
         );
       }
 
+      // Materialise the data URL to a cache file. We use the same file for
+      // both the immediate /onboarding/first-ritual playback and the
+      // pre-cached morning alarm at /alarm/ritual — same audio, two doors.
+      let usableCachePath: string | null = null;
+      try {
+        if (final.audio_url.startsWith('data:')) {
+          const filename = `next-ritual-${Date.now()}.mp3`;
+          usableCachePath = await dataUrlToFileUri(final.audio_url, filename);
+        }
+      } catch (err) {
+        console.warn('failed to cache ritual audio file', err);
+        usableCachePath = null;
+      }
+
       await setPreferences({
-        firstRitualAudioUrl: final.audio_url,
+        firstRitualAudioUrl: usableCachePath ?? final.audio_url,
         firstRitualScript: final.script,
         firstRitualVoice: req.voice ?? 'the_closer',
         firstRitualFinalScore: final.final_score,
+        nextRitualPath: usableCachePath,
+        nextRitualScript: final.script,
+        nextRitualGeneratedAt: new Date().toISOString(),
+        nextRitualVoice: req.voice ?? 'the_closer',
+        nextRitualFirstAction: req.first_action,
+        nextRitualFinalScore: final.final_score,
         hasOnboarded: true,
       });
 

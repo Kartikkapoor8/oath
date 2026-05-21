@@ -31,7 +31,7 @@ export default function AlarmTime() {
 
   const handleNext = async () => {
     await setPreferences({ alarmTime: format24h(time) });
-    router.push('/onboarding/generating');
+    router.push('/onboarding/notifications-permission');
   };
 
   return (
