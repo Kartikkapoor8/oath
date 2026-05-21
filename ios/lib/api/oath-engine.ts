@@ -88,20 +88,46 @@ export class PipelineError extends Error {
   }
 }
 
-export const PIPELINE_TIMEOUT_MS = 35_000;
+export const PIPELINE_TIMEOUT_MS = 60_000;
+
+const DEBUG = false; // flip to true to log every step of generation
+
+function log(...args: unknown[]) {
+  if (DEBUG) console.log('[oath-engine]', ...args);
+}
+
+function parseSseBody(text: string): PipelineEvent[] {
+  const events: PipelineEvent[] = [];
+  for (const block of text.split('\n\n')) {
+    const line = block.trim();
+    if (!line.startsWith('data: ')) continue;
+    const json = line.slice(6).trim();
+    if (!json) continue;
+    try {
+      events.push(JSON.parse(json) as PipelineEvent);
+    } catch (err) {
+      log('failed to parse SSE event', json, err);
+    }
+  }
+  return events;
+}
 
 /**
- * Streams pipeline events from the v2 engine over SSE. Yields each stage
- * event as it arrives; returns the FinalEvent when the pipeline completes.
+ * Runs the pipeline against the live engine and yields events.
  *
- * Default timeout is 35s — slightly above the engine's own 30s ceiling.
- * Pass a longer `timeoutMs` for slow networks. Pass an external `signal`
- * to abort from the caller (e.g., when the user navigates away mid-stream).
+ * React Native's `fetch` does not expose `response.body` as a streaming
+ * `ReadableStream`. The earlier streaming implementation worked under
+ * curl and on Expo Web but threw "pipeline returned no response body" on
+ * the iOS Expo Go runtime. We now read the full response text and parse
+ * the SSE events from it; the consumer (`/onboarding/generating`) drives
+ * progressive UI with a wall-clock fake timer.
  *
- * Throws PipelineError on transport failure or server-reported stage error.
- * Errors marked `retryable: true` are safe to retry once (network failures);
- * `retryable: false` errors are validation / server-side issues that will
- * fail the same way on retry.
+ * Default timeout: 60s — the engine usually completes in ~27s but we
+ * leave headroom for slow networks (real users on cellular).
+ *
+ * Errors marked `retryable: true` are safe to retry once (network /
+ * 5xx). `retryable: false` errors are server-reported stage failures
+ * that will fail the same way on retry.
  */
 export async function* generateRitual(
   input: PipelineInputs,
@@ -115,13 +141,19 @@ export async function* generateRitual(
   );
   if (options.signal) {
     if (options.signal.aborted) controller.abort(options.signal.reason);
-    else options.signal.addEventListener('abort', () => controller.abort(options.signal!.reason));
+    else
+      options.signal.addEventListener('abort', () =>
+        controller.abort(options.signal!.reason),
+      );
   }
+
+  const url = `${getApiBase()}/api/generate`;
+  log('fetch ->', url);
 
   try {
     let response: Response;
     try {
-      response = await fetch(`${getApiBase()}/api/generate`, {
+      response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -135,6 +167,8 @@ export async function* generateRitual(
       throw new PipelineError(`network: ${msg}`, undefined, true);
     }
 
+    log('response status', response.status);
+
     if (!response.ok) {
       const retryable = response.status >= 500;
       throw new PipelineError(
@@ -143,53 +177,50 @@ export async function* generateRitual(
         retryable,
       );
     }
-    if (!response.body) {
-      throw new PipelineError('pipeline returned no response body', undefined, true);
+
+    let text: string;
+    try {
+      text = await response.text();
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      throw new PipelineError(`read body: ${msg}`, undefined, true);
     }
 
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder();
-    let buffer = '';
+    log('body length', text.length);
+
+    const events = parseSseBody(text);
+    log('parsed events', events.length);
+
+    if (events.length === 0) {
+      throw new PipelineError('pipeline returned no events', undefined, true);
+    }
+
     let finalResult: FinalEvent | null = null;
-
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-
-      buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split('\n\n');
-      buffer = lines.pop() ?? '';
-
-      for (const line of lines) {
-        if (!line.startsWith('data: ')) continue;
-        const json = line.slice(6).trim();
-        if (!json) continue;
-
-        let payload: PipelineEvent;
-        try {
-          payload = JSON.parse(json) as PipelineEvent;
-        } catch (err) {
-          console.warn('failed to parse SSE event', json, err);
-          continue;
-        }
-
-        if (payload.stage === 'final') {
-          finalResult = payload as FinalEvent;
-          continue;
-        }
-        if (payload.stage === 'error') {
-          const evt = payload as StageEvent;
-          throw new PipelineError(
-            evt.error || 'pipeline error',
-            evt.stage,
-            false,
-          );
-        }
-
-        yield payload as StageEvent;
+    for (const payload of events) {
+      if (payload.stage === 'final') {
+        finalResult = payload as FinalEvent;
+        continue;
       }
+      if (payload.stage === 'error') {
+        const evt = payload as StageEvent;
+        throw new PipelineError(
+          evt.error || 'pipeline error',
+          evt.stage,
+          false,
+        );
+      }
+      yield payload as StageEvent;
     }
 
+    if (!finalResult) {
+      throw new PipelineError(
+        'pipeline finished without a final event',
+        undefined,
+        true,
+      );
+    }
+
+    log('done — final_score', finalResult.final_score);
     return finalResult;
   } finally {
     clearTimeout(timeoutId);

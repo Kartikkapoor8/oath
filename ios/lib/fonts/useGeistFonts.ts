@@ -11,7 +11,9 @@ import { useFonts } from 'expo-font';
 //   2. Uncomment the FONT_MAP entries
 //   3. Restart Metro (`npx expo start --clear`)
 
-const FONT_MAP: Record<string, ReturnType<typeof require>> = {
+type FontMap = Parameters<typeof useFonts>[0];
+
+const FONT_MAP: FontMap = {
   // 'Geist-Regular':   require('../../assets/fonts/Geist-Regular.ttf'),
   // 'Geist-Medium':    require('../../assets/fonts/Geist-Medium.ttf'),
   // 'Geist-SemiBold':  require('../../assets/fonts/Geist-SemiBold.ttf'),
