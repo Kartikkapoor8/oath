@@ -29,6 +29,9 @@ env/
 # allow the vercel demo's pre-staged audio (staged demo + 5 voice preset samples)
 !web/public/*.mp3
 
+# allow the ios app's bundled voice previews and fallback ritual
+!ios/assets/audio/**/*.mp3
+
 # ide / os
 .idea/
 .vscode/

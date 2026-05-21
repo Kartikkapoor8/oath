@@ -8,6 +8,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { View } from 'react-native';
 import { colors } from '@/lib/design-system';
 import { useGeistFonts } from '@/lib/fonts/useGeistFonts';
+import { configureAudioSession } from '@/lib/audio/setup';
 
 SplashScreen.preventAutoHideAsync().catch(() => {
   // already hidden
@@ -15,6 +16,10 @@ SplashScreen.preventAutoHideAsync().catch(() => {
 
 export default function RootLayout() {
   const fontsReady = useGeistFonts();
+
+  useEffect(() => {
+    configureAudioSession();
+  }, []);
 
   useEffect(() => {
     if (fontsReady) {

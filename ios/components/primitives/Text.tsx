@@ -79,12 +79,15 @@ export interface TextProps extends RNTextProps {
 
 export function Text({
   variant = 'body',
-  color = colors.fg.DEFAULT,
+  color,
   uppercase,
   style,
   children,
   ...rest
 }: TextProps) {
+  const resolvedColor =
+    color ?? (variant === 'caption' ? colors.amber.dim : colors.fg.DEFAULT);
+
   return (
     <RNText
       {...rest}
@@ -94,7 +97,7 @@ export function Text({
           fontSize: variantToSize[variant],
           lineHeight: variantToLineHeight[variant],
           letterSpacing: variantToLetterSpacing[variant],
-          color: variant === 'caption' ? colors.amber.dim : color,
+          color: resolvedColor,
           textTransform: uppercase || variant === 'caption' ? 'uppercase' : 'none',
         },
         style,

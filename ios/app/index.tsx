@@ -1,32 +1,20 @@
-import { useEffect, useState } from 'react';
-import { View, ActivityIndicator } from 'react-native';
-import { Redirect } from 'expo-router';
+import { useEffect } from 'react';
+import { router } from 'expo-router';
+import { View } from 'react-native';
+import { getPreferences } from '@/lib/storage/preferences';
 import { colors } from '@/lib/design-system';
-import { getPreferences, type UserPreferences } from '@/lib/storage/preferences';
 
 export default function Index() {
-  const [prefs, setPrefs] = useState<UserPreferences | null>(null);
-
   useEffect(() => {
-    getPreferences().then(setPrefs);
+    (async () => {
+      const prefs = await getPreferences();
+      if (!prefs.hasOnboarded) {
+        router.replace('/onboarding');
+      } else {
+        router.replace('/(tabs)/home');
+      }
+    })();
   }, []);
 
-  if (!prefs) {
-    return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: colors.bg.DEFAULT,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <ActivityIndicator color={colors.amber.DEFAULT} />
-      </View>
-    );
-  }
-
-  if (!prefs.hasOnboarded) return <Redirect href="/onboarding" />;
-  if (!prefs.hasPaid) return <Redirect href="/paywall" />;
-  return <Redirect href="/(tabs)/home" />;
+  return <View style={{ flex: 1, backgroundColor: colors.bg.DEFAULT }} />;
 }
