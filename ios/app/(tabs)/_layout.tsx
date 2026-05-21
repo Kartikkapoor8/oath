@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Home, Library, Settings } from 'lucide-react-native';
+import { Home, BookText, Settings } from 'lucide-react-native';
 import { colors } from '@/lib/design-system';
 
 export default function TabsLayout() {
@@ -7,34 +7,37 @@ export default function TabsLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
+        tabBarShowLabel: false,
         tabBarActiveTintColor: colors.amber.DEFAULT,
         tabBarInactiveTintColor: colors.fg.subtle,
         tabBarStyle: {
-          backgroundColor: colors.bg.raised,
+          backgroundColor: colors.bg.elevated,
           borderTopColor: colors.border.subtle,
           borderTopWidth: 1,
+          height: 64,
+          paddingTop: 8,
+        },
+        tabBarItemStyle: {
+          paddingVertical: 4,
         },
       }}
     >
       <Tabs.Screen
         name="home"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color, size }) => <Home color={color} size={size} />,
+          tabBarIcon: ({ color }) => <Home color={color} size={24} strokeWidth={2} />,
         }}
       />
       <Tabs.Screen
         name="library"
         options={{
-          title: 'Library',
-          tabBarIcon: ({ color, size }) => <Library color={color} size={size} />,
+          tabBarIcon: ({ color }) => <BookText color={color} size={24} strokeWidth={2} />,
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
-          title: 'Settings',
-          tabBarIcon: ({ color, size }) => <Settings color={color} size={size} />,
+          tabBarIcon: ({ color }) => <Settings color={color} size={24} strokeWidth={2} />,
         }}
       />
     </Tabs>
