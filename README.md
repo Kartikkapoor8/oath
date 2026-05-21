@@ -1,3 +1,7 @@
+> **This project has moved to the Deep24 monorepo:** [github.com/amber-ai-org/kartik-monorepo/tree/main/oath](https://github.com/amber-ai-org/kartik-monorepo/tree/main/oath)
+>
+> The old repository is preserved for historical reference. All new development happens in the monorepo.
+
 # Oath
 
 an anti-feed morning alarm ritual. v1: audio-first. v2: video.
