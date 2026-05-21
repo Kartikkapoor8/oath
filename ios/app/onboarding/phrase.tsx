@@ -27,10 +27,10 @@ export default function Phrase() {
       <OnboardingHeader
         caption="STEP 2 OF 6"
         title="What's your phrase?"
-        subtitle="a mantra that grounds you. echo will repeat it back. keep it short — one short sentence."
+        subtitle="a mantra that grounds you. the ritual will echo it back. one short sentence."
       />
 
-      <View style={{ gap: spacing[2] }}>
+      <View style={{ gap: spacing[3] }}>
         <Input
           value={value}
           onChangeText={setValue}
@@ -39,6 +39,7 @@ export default function Phrase() {
           autoCapitalize="sentences"
           maxLength={MAX_LEN}
           returnKeyType="next"
+          blurOnSubmit={false}
           onSubmitEditing={handleNext}
           autoFocus
         />

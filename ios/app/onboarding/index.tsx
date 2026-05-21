@@ -13,21 +13,31 @@ import { Button, Text } from '@/components/primitives';
 import { colors, fonts, spacing } from '@/lib/design-system';
 
 export default function Welcome() {
-  const glow = useSharedValue(0.3);
+  const glow = useSharedValue(0.35);
+  const scale = useSharedValue(1);
 
   useEffect(() => {
     glow.value = withRepeat(
-      withTiming(0.6, {
-        duration: 1500,
+      withTiming(0.7, {
+        duration: 2500,
         easing: Easing.inOut(Easing.cubic),
       }),
       -1,
       true,
     );
-  }, [glow]);
+    scale.value = withRepeat(
+      withTiming(1.05, {
+        duration: 2500,
+        easing: Easing.inOut(Easing.cubic),
+      }),
+      -1,
+      true,
+    );
+  }, [glow, scale]);
 
   const glowStyle = useAnimatedStyle(() => ({
     shadowOpacity: glow.value,
+    transform: [{ scale: scale.value }],
   }));
 
   return (
@@ -48,7 +58,7 @@ export default function Welcome() {
             {
               shadowColor: colors.amber.DEFAULT,
               shadowOffset: { width: 0, height: 0 },
-              shadowRadius: 40,
+              shadowRadius: 56,
             },
             glowStyle,
           ]}
@@ -57,26 +67,40 @@ export default function Welcome() {
             color={colors.amber.DEFAULT}
             style={{
               fontFamily: fonts.display,
-              fontSize: 64,
-              lineHeight: 68,
-              letterSpacing: -2,
+              fontSize: 72,
+              lineHeight: 76,
+              letterSpacing: -2.5,
             }}
           >
             OATH
           </Text>
         </Animated.View>
 
-        <View style={{ marginTop: spacing[6], gap: spacing[3], alignItems: 'center' }}>
-          <Text variant="h2" color={colors.fg.DEFAULT} style={{ textAlign: 'center' }}>
+        <View
+          style={{
+            marginTop: spacing[8],
+            gap: spacing[3],
+            alignItems: 'center',
+          }}
+        >
+          <Text
+            variant="h2"
+            color={colors.fg.DEFAULT}
+            style={{ textAlign: 'center', letterSpacing: -0.5 }}
+          >
             the anti-feed morning ritual
           </Text>
           <Text
-            variant="body"
+            variant="bodyLg"
             color={colors.fg.muted}
-            style={{ textAlign: 'center', paddingHorizontal: spacing[2] }}
+            style={{
+              textAlign: 'center',
+              paddingHorizontal: spacing[4],
+              lineHeight: 26,
+            }}
           >
-            swear your hardest task at night. dismiss the alarm. one ritual plays.
-            you start.
+            swear your hardest task at night. dismiss the alarm. one ritual
+            plays. you start.
           </Text>
         </View>
       </View>

@@ -30,7 +30,7 @@ export default function Hero() {
         subtitle="future you will reference them in the morning ritual. think specific — Kobe, Harvey Specter, your dad, your coach."
       />
 
-      <View style={{ gap: spacing[2] }}>
+      <View style={{ gap: spacing[3] }}>
         <Input
           value={value}
           onChangeText={setValue}
@@ -39,6 +39,7 @@ export default function Hero() {
           autoCapitalize="words"
           maxLength={MAX_LEN}
           returnKeyType="next"
+          blurOnSubmit={false}
           onSubmitEditing={handleNext}
           autoFocus
         />
