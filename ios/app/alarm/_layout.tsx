@@ -6,9 +6,12 @@ export default function AlarmLayout() {
     <Stack
       screenOptions={{
         headerShown: false,
-        animation: 'fade',
         contentStyle: { backgroundColor: colors.bg.DEFAULT },
+        // No swipe-to-dismiss while the ritual is playing — the whole point
+        // is "no escape to the feed". The action button is the only exit.
         gestureEnabled: false,
+        animation: 'fade',
+        animationDuration: 200,
       }}
     />
   );
