@@ -4,7 +4,7 @@ import {
   type TextInputProps as RNTextInputProps,
   View,
 } from 'react-native';
-import { colors, radius, spacing, fonts, fontSize } from '@/lib/design-system';
+import { colors, fonts, fontSize, radius, spacing } from '@/lib/design-system';
 
 export interface InputProps extends RNTextInputProps {
   fullWidth?: boolean;
@@ -22,12 +22,20 @@ export function Input({
   return (
     <View
       style={{
-        backgroundColor: colors.bg.raised,
-        borderColor: focused ? colors.amber.DEFAULT : colors.border.subtle,
+        backgroundColor: colors.bg.elevated,
+        borderRadius: radius['2xl'],
+        borderColor: focused ? colors.amber.glow : colors.border.subtle,
         borderWidth: 1,
-        borderRadius: radius.xl,
-        paddingHorizontal: spacing[4],
-        height: 56,
+        // amber-tinted lift on focus, no border-flashing
+        shadowColor: colors.amber.DEFAULT,
+        shadowOffset: { width: 0, height: 0 },
+        shadowRadius: focused ? 18 : 0,
+        shadowOpacity: focused ? 0.18 : 0,
+        paddingHorizontal: spacing[5],
+        // single-line accent bar at the bottom, like Linear's inputs
+        borderBottomColor: focused ? colors.amber.DEFAULT : colors.border.subtle,
+        borderBottomWidth: focused ? 2 : 1,
+        height: 64,
         justifyContent: 'center',
         alignSelf: fullWidth ? 'stretch' : 'auto',
       }}
@@ -49,7 +57,9 @@ export function Input({
           {
             color: colors.fg.DEFAULT,
             fontFamily: fonts.body,
-            fontSize: fontSize.body,
+            fontSize: fontSize.bodyLg,
+            letterSpacing: -0.2,
+            paddingVertical: 0,
           },
           style,
         ]}

@@ -92,6 +92,12 @@ export function Button({
           justifyContent: 'center',
           opacity: disabled ? 0.5 : 1,
           alignSelf: fullWidth ? 'stretch' : 'auto',
+          // Subtle amber rest-glow on the primary CTA — premium iOS feel.
+          // Secondary/ghost/destructive don't get the glow (would clash).
+          shadowColor: variant === 'primary' ? colors.amber.DEFAULT : 'transparent',
+          shadowOffset: { width: 0, height: 0 },
+          shadowRadius: variant === 'primary' ? 14 : 0,
+          shadowOpacity: variant === 'primary' && !disabled ? 0.35 : 0,
         },
         animatedStyle,
       ]}
