@@ -6,8 +6,11 @@ export default function OnboardingLayout() {
     <Stack
       screenOptions={{
         headerShown: false,
-        animation: 'slide_from_right',
         contentStyle: { backgroundColor: colors.bg.DEFAULT },
+        animation: 'slide_from_right',
+        animationDuration: 250,
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
       }}
     />
   );
